@@ -1,4 +1,4 @@
 sceneSetups:
-- path: "Assets/t\xF6tt\xF6r\xF6\xF6.unity"
+- path: "Assets/OmatAssetit/Scenes/t\xF6tt\xF6r\xF6\xF6.unity"
   isLoaded: 1
   isActive: 1
