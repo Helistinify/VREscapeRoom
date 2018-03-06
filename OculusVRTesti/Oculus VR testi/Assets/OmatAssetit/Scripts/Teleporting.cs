@@ -4,17 +4,17 @@ using UnityEngine;
 
 public class Teleporting : MonoBehaviour {
 
-    // Use this for initialization
     public GameObject Controller;
-    public GameObject RHP_Object;
-    Renderer RHP_Render;
+    GameObject RHP_Object; //Raycast Hit Point Object
+    Renderer RHP_Render; //Raycast Hit Point Renderer
     bool ShowIndicator;
     bool CanTeleport;
     Vector3 TPosition;
 
-	void Start () {
+    void Start () {
         //Take reference to controller
         Controller = gameObject;
+        RHP_Object = GameObject.Find("TeleporterIndicator(Clone)");
         RHP_Render = RHP_Object.GetComponent<Renderer>();
         CanTeleport = false;
     }
@@ -44,7 +44,7 @@ public class Teleporting : MonoBehaviour {
         {
             // Raycast forward from Controller
             RaycastHit hit;
-            if (Physics.Raycast(transform.position, transform.forward, out hit))
+            if (Physics.Raycast(transform.position, transform.forward, out hit)) // Also check if raycast hit not touching an object with tag "Wall"
             {
                 // Move an object to the raycast hit point
                 if (hit.transform.tag == "Ground")
