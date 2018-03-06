@@ -9,15 +9,18 @@ public class GameManager : MonoBehaviour {
     public GameObject OculusPlayer;
     public GameObject VRDToSpawn;
     public GameObject TeleporterIndicator;
+    public string VRModel;
 
     private void Awake() // Check before the game is loaded for what device the player is using.
     {
-        if (XRDevice.model == "Oculus Rift CV1") // CHANGE VRDevice to XRDevice when updating !!!
+        VRModel = XRDevice.model;
+
+        if (VRModel == "Oculus Rift CV1") // CHANGE VRDevice to XRDevice when updating !!!
         {
             Debug.Log("Oculus connected");
             VRDToSpawn = OculusPlayer;
         }
-        else if (XRDevice.model == "Vive MV") // CHANGE VRDevice to XRDevice when updating !!!
+        else if (VRModel == "Vive MV") // CHANGE VRDevice to XRDevice when updating !!!
         {
             Debug.Log("Vive connected");
             VRDToSpawn = VivePlayer;
