@@ -66,6 +66,7 @@ public class OVRGrabber : MonoBehaviour
     protected Quaternion m_grabbedObjectRotOff;
 	protected Dictionary<OVRGrabbable, int> m_grabCandidates = new Dictionary<OVRGrabbable, int>();
 	protected bool operatingWithoutOVRCameraRig = true;
+    protected OVRPlayerController m_playerCont = null; // Heikki added for test, reference to player controller script
 
     /// <summary>
     /// The currently grabbed object.
@@ -107,6 +108,8 @@ public class OVRGrabber : MonoBehaviour
 
     protected virtual void Start()
     {
+        m_playerCont = GetComponent<OVRPlayerController>(); // Heikki added for test, get reference
+
         m_lastPos = transform.position;
         m_lastRot = transform.rotation;
         if(m_parentTransform == null)
@@ -297,6 +300,8 @@ public class OVRGrabber : MonoBehaviour
             {
                 m_grabbedObj.transform.parent = transform;
             }
+
+            m_playerCont.IgnoreGrapperObj(m_grabbedObj); //Heikki added for test, Ignore player collision
         }
     }
 
@@ -334,6 +339,8 @@ public class OVRGrabber : MonoBehaviour
 			OVRPose trackingSpace = transform.ToOVRPose() * localPose.Inverse();
 			Vector3 linearVelocity = trackingSpace.orientation * OVRInput.GetLocalControllerVelocity(m_controller);
 			Vector3 angularVelocity = trackingSpace.orientation * OVRInput.GetLocalControllerAngularVelocity(m_controller);
+
+            m_playerCont.StopIgnore(m_grabbedObj); // Heikki added for test, Stop ignoring player collision
 
             GrabbableRelease(linearVelocity, angularVelocity);
         }

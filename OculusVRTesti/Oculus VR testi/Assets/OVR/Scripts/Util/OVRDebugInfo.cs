@@ -1,9 +1,9 @@
 /************************************************************************************
 
-Copyright   :   Copyright 2014 Oculus VR, LLC. All Rights reserved.
+Copyright   :   Copyright 2014 Oculus XR, LLC. All Rights reserved.
 
-Licensed under the Oculus VR Rift SDK License Version 3.3 (the "License");
-you may not use the Oculus VR Rift SDK except in compliance with the License,
+Licensed under the Oculus XR Rift SDK License Version 3.3 (the "License");
+you may not use the Oculus XR Rift SDK except in compliance with the License,
 which is provided at the time of installation or download, or which
 otherwise accompanies this software in either electronic or hard copy form.
 
@@ -11,7 +11,7 @@ You may obtain a copy of the License at
 
 http://www.oculus.com/licenses/LICENSE-3.3
 
-Unless required by applicable law or agreed to in writing, the Oculus VR SDK
+Unless required by applicable law or agreed to in writing, the Oculus XR SDK
 distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
@@ -22,7 +22,7 @@ limitations under the License.
 using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
-using VR = UnityEngine.VR;
+using XR = UnityEngine.XR;
 
 //-------------------------------------------------------------------------------------
 /// <summary>
@@ -45,7 +45,7 @@ public class OVRDebugInfo : MonoBehaviour
     #endregion
 
     #region Debug strings
-	string strRiftPresent            = null; // "VR DISABLED"
+	string strRiftPresent            = null; // "XR DISABLED"
     string strFPS                    = null; // "FPS: 0";
     string strIPD                    = null; // "IPD: 0.000";
     string strFOV                    = null; // "FOV: 0.0f";
@@ -80,9 +80,9 @@ public class OVRDebugInfo : MonoBehaviour
     float riftPresentTimeout = 0.0f;
 
     /// <summary>
-    /// Turn on / off VR variables
+    /// Turn on / off XR variables
     /// </summary>
-    bool showVRVars = false;
+    bool showXRVars = false;
 
     #region MonoBehaviour handler
 
@@ -108,7 +108,7 @@ public class OVRDebugInfo : MonoBehaviour
     }
 
     /// <summary>
-    /// Updating VR variables and managing UI present
+    /// Updating XR variables and managing UI present
     /// </summary>
     void Update()
     {
@@ -120,13 +120,13 @@ public class OVRDebugInfo : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && riftPresentTimeout < 0.0f)
         {
             initUIComponent = true;
-            showVRVars ^= true;
+            showXRVars ^= true;
         }
 
         UpdateDeviceDetection();
 
-        // Presenting VR variables
-        if (showVRVars)
+        // Presenting XR variables
+        if (showXRVars)
         {
             debugUIManager.SetActive(true);
             UpdateVariable();
@@ -212,7 +212,7 @@ public class OVRDebugInfo : MonoBehaviour
     }
 
     /// <summary>
-    /// Update VR Variables
+    /// Update XR Variables
     /// </summary>
     void UpdateVariable()
     {        
@@ -364,7 +364,7 @@ public class OVRDebugInfo : MonoBehaviour
     /// </summary>
     void UpdateFOV()
     {
-        OVRDisplay.EyeRenderDesc eyeDesc = OVRManager.display.GetEyeRenderDesc(VR.VRNode.LeftEye);
+        OVRDisplay.EyeRenderDesc eyeDesc = OVRManager.display.GetEyeRenderDesc(XR.XRNode.LeftEye);
         strFOV = System.String.Format("FOV (deg): {0:F3}", eyeDesc.fov.y);   
     }
 
@@ -373,10 +373,10 @@ public class OVRDebugInfo : MonoBehaviour
     /// </summary>
     void UpdateResolutionEyeTexture()
     {
-		OVRDisplay.EyeRenderDesc leftEyeDesc = OVRManager.display.GetEyeRenderDesc(VR.VRNode.LeftEye);
-		OVRDisplay.EyeRenderDesc rightEyeDesc = OVRManager.display.GetEyeRenderDesc(VR.VRNode.RightEye);
+		OVRDisplay.EyeRenderDesc leftEyeDesc = OVRManager.display.GetEyeRenderDesc(XR.XRNode.LeftEye);
+		OVRDisplay.EyeRenderDesc rightEyeDesc = OVRManager.display.GetEyeRenderDesc(XR.XRNode.RightEye);
 
-		float scale = VR.VRSettings.renderViewportScale;
+		float scale = XR.XRSettings.renderViewportScale;
         float w = (int)(scale * (float)(leftEyeDesc.resolution.x + rightEyeDesc.resolution.x));
         float h = (int)(scale * (float)Mathf.Max(leftEyeDesc.resolution.y, rightEyeDesc.resolution.y));
 

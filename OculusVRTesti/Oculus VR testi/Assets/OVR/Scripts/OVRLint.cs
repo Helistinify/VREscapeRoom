@@ -1,9 +1,9 @@
 /************************************************************************************
 
-Copyright   :   Copyright 2014 Oculus VR, LLC. All Rights reserved.
+Copyright   :   Copyright 2014 Oculus XR, LLC. All Rights reserved.
 
-Licensed under the Oculus VR Rift SDK License Version 3.3 (the "License");
-you may not use the Oculus VR Rift SDK except in compliance with the License,
+Licensed under the Oculus XR Rift SDK License Version 3.3 (the "License");
+you may not use the Oculus XR Rift SDK except in compliance with the License,
 which is provided at the time of installation or download, or which
 otherwise accompanies this software in either electronic or hard copy form.
 
@@ -11,7 +11,7 @@ You may obtain a copy of the License at
 
 http://www.oculus.com/licenses/LICENSE-3.3
 
-Unless required by applicable law or agreed to in writing, the Oculus VR SDK
+Unless required by applicable law or agreed to in writing, the Oculus XR SDK
 distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
@@ -33,7 +33,7 @@ using System.Collections.Generic;
 ///Audio sources > 16
 ///Using MSAA levels other than recommended level
 ///GPU skinning is also probably usually ideal.
-///Excessive pixel lights (>1 on Gear VR; >3 on Rift)
+///Excessive pixel lights (>1 on Gear XR; >3 on Rift)
 ///Directional Lightmapping Modes (on Gear; use Non-Directional)
 ///Preload audio setting on individual audio clips
 ///Decompressing audio clips on load
@@ -50,7 +50,7 @@ using System.Collections.Generic;
 ///Real-time global illumination
 ///No texture compression, or non-ASTC texture compression as a global setting (Gear).
 ///Using deferred rendering
-///Excessive texture resolution after LOD bias (>2k on Gear VR; >4k on Rift)
+///Excessive texture resolution after LOD bias (>2k on Gear XR; >4k on Rift)
 ///Not using trilinear or aniso filtering and not generating mipmaps
 ///Excessive render scale (>1.2)
 ///Slow physics settings: Sleep Threshold < 0.005, Default Contact Offset < 0.01, Solver Iteration Count > 6
@@ -63,8 +63,8 @@ using System.Collections.Generic;
 ///Multiple cameras with clears (on Gear, potential for excessive fill cost)
 ///Excessive shader passes (>2)
 ///Material pointers that have been instanced in the editor (esp. if we could determine that the instance has no deltas from the original)
-///Excessive draw calls (>150 on Gear VR; >2000 on Rift)
-///Excessive tris or verts (>100k on Gear VR; >1M on Rift)
+///Excessive draw calls (>150 on Gear XR; >2000 on Rift)
+///Excessive tris or verts (>100k on Gear XR; >1M on Rift)
 ///Large textures, lots of prefabs in startup scene (for bootstrap optimization)
 /// </summary>
 public class OVRLint : EditorWindow
@@ -103,7 +103,7 @@ public class OVRLint : EditorWindow
 	private Vector2 mScrollPosition;
 
 	
-	[MenuItem("Tools/Oculus/Audit Project for VR Performance Issues")]
+	[MenuItem("Tools/Oculus/Audit Project for XR Performance Issues")]
 	static void Init () 
     {
         // Get existing open window or if none, make a new one:
@@ -529,7 +529,7 @@ public class OVRLint : EditorWindow
 		var overlays = GameObject.FindObjectsOfType<OVROverlay> ();
 		if (overlays.Length > 4)
 		{
-		    AddFix ("Optimize VR Layer Count", "For GPU performance, please use 4 or fewer VR layers.", delegate(UnityEngine.Object obj, bool last, int selected)
+		    AddFix ("Optimize XR Layer Count", "For GPU performance, please use 4 or fewer XR layers.", delegate(UnityEngine.Object obj, bool last, int selected)
 		    {
 				for (int i = 4; i < OVROverlay.instances.Length; ++i)
 				{
@@ -557,11 +557,11 @@ public class OVRLint : EditorWindow
 			}, null, "Fix");
 		}
 
-		if (UnityEngine.VR.VRSettings.renderScale > 1.5)
+		if (UnityEngine.XR.XRSettings.renderScale > 1.5)
 		{
 			AddFix ("Optimize Render Scale", "For GPU performance, please don't use render scale over 1.5.", delegate(UnityEngine.Object obj, bool last, int selected)
 			{
-				UnityEngine.VR.VRSettings.renderScale = 1.5f;
+				UnityEngine.XR.XRSettings.renderScale = 1.5f;
 			}, null, "Fix");
 		}
 	}
@@ -724,7 +724,7 @@ public class OVRLint : EditorWindow
 			AddFix ("Triangles and Verts", "Please use less than 100000 triangles or vertices.", null, null);
 		}
 
-		// Warn for 50 if in non-VR mode?
+		// Warn for 50 if in non-XR mode?
 		if (UnityStats.drawCalls > 100)
 		{
 			AddFix ("Draw Calls", "Please use less than 100 draw calls.", null, null);
