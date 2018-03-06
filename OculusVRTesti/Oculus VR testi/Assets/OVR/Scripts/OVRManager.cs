@@ -1,9 +1,9 @@
 ﻿/************************************************************************************
 
-Copyright   :   Copyright 2014 Oculus VR, LLC. All Rights reserved.
+Copyright   :   Copyright 2014 Oculus XR, LLC. All Rights reserved.
 
-Licensed under the Oculus VR Rift SDK License Version 3.3 (the "License");
-you may not use the Oculus VR Rift SDK except in compliance with the License,
+Licensed under the Oculus XR Rift SDK License Version 3.3 (the "License");
+you may not use the Oculus XR Rift SDK except in compliance with the License,
 which is provided at the time of installation or download, or which
 otherwise accompanies this software in either electronic or hard copy form.
 
@@ -11,7 +11,7 @@ You may obtain a copy of the License at
 
 http://www.oculus.com/licenses/LICENSE-3.3
 
-Unless required by applicable law or agreed to in writing, the Oculus VR SDK
+Unless required by applicable law or agreed to in writing, the Oculus XR SDK
 distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
@@ -26,7 +26,7 @@ limitations under the License.
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using VR = UnityEngine.VR;
+using XR = UnityEngine.XR;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -107,14 +107,14 @@ public class OVRManager : MonoBehaviour
 	public static event Action HMDUnmounted;
 
 	/// <summary>
-	/// Occurs when VR Focus is acquired.
+	/// Occurs when XR Focus is acquired.
 	/// </summary>
-	public static event Action VrFocusAcquired;
+	public static event Action XRFocusAcquired;
 
 	/// <summary>
-	/// Occurs when VR Focus is lost.
+	/// Occurs when XR Focus is lost.
 	/// </summary>
-	public static event Action VrFocusLost;
+	public static event Action XRFocusLost;
 
 	/// <summary>
 	/// Occurs when Input Focus is acquired.
@@ -211,27 +211,27 @@ public class OVRManager : MonoBehaviour
 		get { return OVRPlugin.audioInId; }
 	}
 
-	private static bool _hasVrFocusCached = false;
-	private static bool _hasVrFocus = false;
-	private static bool _hadVrFocus = false;
+	private static bool _hasXRFocusCached = false;
+	private static bool _hasXRFocus = false;
+	private static bool _hadXRFocus = false;
 	/// <summary>
-	/// If true, the app has VR Focus.
+	/// If true, the app has XR Focus.
 	/// </summary>
-	public static bool hasVrFocus
+	public static bool hasXRFocus
 	{
 		get {
-			if (!_hasVrFocusCached)
+			if (!_hasXRFocusCached)
 			{
-				_hasVrFocusCached = true;
-				_hasVrFocus = OVRPlugin.hasVrFocus;
+				_hasXRFocusCached = true;
+				_hasXRFocus = OVRPlugin.hasXRFocus;
 			}
 
-			return _hasVrFocus;
+			return _hasXRFocus;
 		}
 
 		private set {
-			_hasVrFocusCached = true;
-			_hasVrFocus = value;
+			_hasXRFocusCached = true;
+			_hasXRFocus = value;
 		}
 	}
 
@@ -852,7 +852,7 @@ public class OVRManager : MonoBehaviour
 			UnityEngine.Rendering.GraphicsDeviceType.Direct3D12.ToString();
 
 		if (!supportedTypes.Contains(SystemInfo.graphicsDeviceType.ToString()))
-			Debug.LogWarning("VR rendering requires one of the following device types: (" + supportedTypes + "). Your graphics device: " + SystemInfo.graphicsDeviceType.ToString());
+			Debug.LogWarning("XR rendering requires one of the following device types: (" + supportedTypes + "). Your graphics device: " + SystemInfo.graphicsDeviceType.ToString());
 #endif
 
 		// Detect whether this platform is a supported platform
@@ -1052,16 +1052,16 @@ public class OVRManager : MonoBehaviour
 
 		_wasUserPresent = isUserPresent;
 
-		// Dispatch VR Focus events.
+		// Dispatch XR Focus events.
 
-		hasVrFocus = OVRPlugin.hasVrFocus;
+		hasXRFocus = OVRPlugin.hasXRFocus;
 
-		if (_hadVrFocus && !hasVrFocus)
+		if (_hadXRFocus && !hasXRFocus)
 		{
 			try
 			{
-				if (VrFocusLost != null)
-					VrFocusLost();
+				if (XRFocusLost != null)
+					XRFocusLost();
 			}
 			catch (Exception e)
 			{
@@ -1069,12 +1069,12 @@ public class OVRManager : MonoBehaviour
 			}
 		}
 
-		if (!_hadVrFocus && hasVrFocus)
+		if (!_hadXRFocus && hasXRFocus)
 		{
 			try
 			{
-				if (VrFocusAcquired != null)
-					VrFocusAcquired();
+				if (XRFocusAcquired != null)
+					XRFocusAcquired();
 			}
 			catch (Exception e)
 			{
@@ -1082,9 +1082,9 @@ public class OVRManager : MonoBehaviour
 			}
 		}
 
-		_hadVrFocus = hasVrFocus;
+		_hadXRFocus = hasXRFocus;
 
-		// Dispatch VR Input events.
+		// Dispatch XR Input events.
 
 		bool hasInputFocus = OVRPlugin.hasInputFocus;
 
@@ -1153,21 +1153,21 @@ public class OVRManager : MonoBehaviour
 
 		if (enableAdaptiveResolution)
 		{
-			if (UnityEngine.XR.XRSettings.eyeTextureResolutionScale < maxRenderScale)
+			if (XR.XRSettings.renderScale < maxRenderScale)
 			{
 				// Allocate renderScale to max to avoid re-allocation
-				UnityEngine.XR.XRSettings.eyeTextureResolutionScale = maxRenderScale;
+				XR.XRSettings.renderScale = maxRenderScale;
 			}
 			else
 			{
 				// Adjusting maxRenderScale in case app started with a larger renderScale value
-				maxRenderScale = Mathf.Max(maxRenderScale, UnityEngine.XR.XRSettings.eyeTextureResolutionScale);
+				maxRenderScale = Mathf.Max(maxRenderScale, XR.XRSettings.renderScale);
 			}
 			minRenderScale = Mathf.Min(minRenderScale, maxRenderScale);
-			float minViewportScale = minRenderScale / UnityEngine.XR.XRSettings.eyeTextureResolutionScale;
-			float recommendedViewportScale = OVRPlugin.GetEyeRecommendedResolutionScale() / UnityEngine.XR.XRSettings.eyeTextureResolutionScale;
+			float minViewportScale = minRenderScale / XR.XRSettings.renderScale;
+			float recommendedViewportScale = OVRPlugin.GetEyeRecommendedResolutionScale() / XR.XRSettings.renderScale;
 			recommendedViewportScale = Mathf.Clamp(recommendedViewportScale, minViewportScale, 1.0f);
-			UnityEngine.XR.XRSettings.renderViewportScale = recommendedViewportScale;
+			XR.XRSettings.renderViewportScale = recommendedViewportScale;
 		}
 #endif
 

@@ -95,11 +95,14 @@
         <para>Object representing a group in the mixer.</para>
       </summary>
     </member>
+<<<<<<< HEAD
+=======
     <member name="T:UnityEngine.Audio.AudioMixerPlayable">
       <summary>
         <para>An implementation of IPlayable that controls an audio mixer.</para>
       </summary>
     </member>
+>>>>>>> 2c6c0c45358f84b4d9c163a39055cbea8e4ba6a2
     <member name="T:UnityEngine.Audio.AudioMixerSnapshot">
       <summary>
         <para>Object representing a snapshot in the mixer.</para>
@@ -635,6 +638,8 @@
         <para>Determines how much the filter's self-resonance is dampened.</para>
       </summary>
     </member>
+<<<<<<< HEAD
+=======
     <member name="T:UnityEngine.AudioRenderer">
       <summary>
         <para>Allow recording the main output of the game or specific groups in the AudioMixer.</para>
@@ -673,6 +678,7 @@
         <para>True if the engine was recording when this function was called.</para>
       </returns>
     </member>
+>>>>>>> 2c6c0c45358f84b4d9c163a39055cbea8e4ba6a2
     <member name="T:UnityEngine.AudioReverbFilter">
       <summary>
         <para>The Audio Reverb Filter takes an Audio Clip and distorts it to create a custom reverb effect.</para>

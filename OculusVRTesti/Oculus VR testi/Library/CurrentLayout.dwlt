@@ -45,7 +45,7 @@ MonoBehaviour:
   m_MinSize: {x: 679, y: 342}
   m_MaxSize: {x: 12004, y: 8042}
   vertical: 0
-  controlID: 9
+  controlID: 51
 --- !u!114 &3
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -144,7 +144,7 @@ MonoBehaviour:
     y: 0
     width: 2560
     height: 1357
-  m_MinSize: {x: 950, y: 300}
+  m_MinSize: {x: 950, y: 392}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &7
 MonoBehaviour:
@@ -334,7 +334,7 @@ MonoBehaviour:
     m_MinimalGUI: 1
   m_defaultScale: 1
   m_TargetTexture: {fileID: 0}
-  m_CurrentColorSpace: 1
+  m_CurrentColorSpace: 0
   m_LastWindowPixelSize: {x: 1532, y: 772}
   m_ClearInEditMode: 1
   m_NoCameraWarning: 1
@@ -395,10 +395,10 @@ MonoBehaviour:
   m_DepthBufferBits: 0
   m_Pos:
     serializedVersion: 2
-    x: 508
-    y: 92
-    width: 1532
-    height: 772
+    x: 756
+    y: 375
+    width: 1136
+    height: 594
   m_PersistentViewDataDictionary: {fileID: 0}
 --- !u!114 &15
 MonoBehaviour:
@@ -439,20 +439,27 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets/OmatAssetit/Prefabs
+    - Assets/OvrAvatar/Scripts
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/OmatAssetit/Prefabs
+  - Assets/OvrAvatar/Scripts
   m_LastFoldersGridSize: -1
-  m_LastProjectPath: C:\Users\aleksi.pakkanen\Documents\GitHub\VREscapeRoom\OculusVRTesti\Oculus
+  m_LastProjectPath: C:\Users\heikki.vayrynen\Documents\GitHub\VREscapeRoom\OculusVRTesti\Oculus
     VR testi
   m_IsLocked: 0
   m_FolderTreeState:
+<<<<<<< HEAD
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 862c0000
     m_LastClickedID: 11398
     m_ExpandedIDs: 00000000f0080000582a0000e62a0000e82a0000682b0000062c00002e2c00003a2c0000702c0000342d0000ce2d00006e2e0000ca2e00007c2f00009c2f0000c8320000ca320000cc320000ce320000d0320000d2320000d4320000d6320000d8320000da320000dc320000de320000e0320000e232000000ca9a3bffffff7f
+=======
+    scrollPos: {x: 0, y: 372}
+    m_SelectedIDs: 3c330000
+    m_LastClickedID: 13116
+    m_ExpandedIDs: 000000001e0800002c31000050310000603100006631000068310000a0310000e6310000f831000010320000723200007a32000090320000ba320000003300001833000026330000663300007c330000d4340000d6340000d8340000da340000dc340000de340000e0340000e2340000e4340000e6340000e8340000ea340000ec340000ee34000000ca9a3bffffff7f
+>>>>>>> 52ee7756775373e3ab325ac785d6fe4616565524
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -480,7 +487,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000f0080000582a0000e62a0000e82a0000682b0000062c00002e2c00003a2c0000702c0000342d0000ce2d00006e2e0000ca2e00007c2f00009c2f0000c8320000ca320000cc320000ce320000d0320000d2320000d4320000d6320000d8320000da320000dc320000de320000e0320000e2320000
+    m_ExpandedIDs: 000000001e0800002c310000603100006631000068310000a0310000e6310000f8310000103200007a320000ba3200000033000026330000663300007c330000d4340000d6340000d8340000da340000dc340000de340000e0340000e2340000e4340000e6340000e8340000ea340000ec340000ee340000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -600,21 +607,25 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 8a010000
     m_LastClickedID: 0
+<<<<<<< HEAD
     m_ExpandedIDs: feeeffff02efffff22efffff24efffff9cfbffff00000000
+=======
+    m_ExpandedIDs: 5ef7ffff62f7ffff6af7ffff00000000a8330000fe33000058340000
+>>>>>>> 52ee7756775373e3ab325ac785d6fe4616565524
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: 
-      m_OriginalName: 
+      m_Name: LeftGrabber
+      m_OriginalName: LeftGrabber
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 0
+      m_UserData: 13432
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 11
+      m_OriginalEventType: 0
       m_IsRenamingFilename: 0
       m_ClientGUIView: {fileID: 4}
     m_SearchString: 
@@ -656,9 +667,9 @@ MonoBehaviour:
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -15.659132, y: -12.485448, z: 16.941792}
+    m_Target: {x: -10.261012, y: -1.4217257, z: 1.8440046}
     speed: 2
-    m_Value: {x: -15.659132, y: -12.485448, z: 16.941792}
+    m_Value: {x: -10.261012, y: -1.4217257, z: 1.8440046}
   m_RenderMode: 0
   m_ValidateTrueMetals: 0
   m_SceneViewState:
@@ -682,13 +693,17 @@ MonoBehaviour:
       speed: 2
       m_Value: 0
   m_Rotation:
-    m_Target: {x: -0.2664767, y: 0.37812343, z: -0.11461444, w: -0.8791339}
+    m_Target: {x: -0.17072244, y: 0.5705119, z: -0.12268059, w: -0.7939267}
     speed: 2
+<<<<<<< HEAD
     m_Value: {x: -0.2664767, y: 0.37812343, z: -0.11461444, w: -0.87913394}
+=======
+    m_Value: {x: -0.17072244, y: 0.5705119, z: -0.12268059, w: -0.7939267}
+>>>>>>> 52ee7756775373e3ab325ac785d6fe4616565524
   m_Size:
-    m_Target: 38.343517
+    m_Target: 19.068825
     speed: 2
-    m_Value: 38.343517
+    m_Value: 19.068825
   m_Ortho:
     m_Target: 0
     speed: 2

@@ -131,6 +131,8 @@
       </summary>
       <param name="activated">True to enable or false to disable Low Latent Frame Presentation.</param>
     </member>
+<<<<<<< HEAD
+=======
     <member name="T:UnityEngine.XR.WSA.HolographicSettings.HolographicReprojectionMode">
       <summary>
         <para>Represents the kind of reprojection an app is requesting to stabilize its holographic rendering relative to the user's head motion.</para>
@@ -156,6 +158,7 @@
         <para>Whether the app is displaying protected content.</para>
       </summary>
     </member>
+>>>>>>> 2c6c0c45358f84b4d9c163a39055cbea8e4ba6a2
     <member name="P:UnityEngine.XR.WSA.HolographicSettings.IsDisplayOpaque">
       <summary>
         <para>This method returns whether or not the display associated with the main camera reports as opaque.</para>
@@ -166,11 +169,14 @@
         <para>Returns true if Holographic rendering is currently running with Latent Frame Presentation.  Default value is false.</para>
       </summary>
     </member>
+<<<<<<< HEAD
+=======
     <member name="P:UnityEngine.XR.WSA.HolographicSettings.ReprojectionMode">
       <summary>
         <para>The kind of reprojection the app is requesting to stabilize its holographic rendering relative to the user's head motion.</para>
       </summary>
     </member>
+>>>>>>> 2c6c0c45358f84b4d9c163a39055cbea8e4ba6a2
     <member name="M:UnityEngine.XR.WSA.HolographicSettings.SetFocusPointForFrame(UnityEngine.Vector3)">
       <summary>
         <para>Sets a point in 3d space that is the focal point of the scene for the user for this frame. This helps improve the visual fidelity of content around this point. This must be set every frame.</para>

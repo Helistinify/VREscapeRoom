@@ -6722,6 +6722,74 @@ See Also: EditorBuildSettingsScene, EditorBuildSettings.scenes.</para>
         <para>The enum flags value modified by the user. This is a selection BitMask where each bit represents an Enum value index. (Note this returned value is not itself an Enum).</para>
       </returns>
     </member>
+<<<<<<< HEAD
+=======
+    <member name="M:UnityEditor.EditorGUI.EndProperty">
+      <summary>
+        <para>Ends a Property wrapper started with BeginProperty.</para>
+      </summary>
+    </member>
+    <member name="M:UnityEditor.EditorGUI.EnumFlagsField(UnityEngine.Rect,System.Enum)">
+      <summary>
+        <para>Displays a menu with an option for every value of the enum type when clicked. An option for the value 0 with name "Nothing" and an option for the value ~0 (that is, all bits set) with the name "Everything" are always displayed at the top of the menu. The names for the values 0 and ~0 can be overriden by defining these values in the enum type.</para>
+      </summary>
+      <param name="position">Rectangle on the screen to use for the enum flags field.</param>
+      <param name="label">Optional label to display in front of the enum flags field.</param>
+      <param name="enumValue">Enum flags value (Only supports enum values for enum types with int as the underlying type).</param>
+      <param name="style">Optional GUIStyle.</param>
+      <returns>
+        <para>The enum flags value modified by the user. This is a selection BitMask where each bit represents an Enum value index. (Note this returned value is not itself an Enum).</para>
+      </returns>
+    </member>
+    <member name="M:UnityEditor.EditorGUI.EnumFlagsField(UnityEngine.Rect,System.Enum,UnityEngine.GUIStyle)">
+      <summary>
+        <para>Displays a menu with an option for every value of the enum type when clicked. An option for the value 0 with name "Nothing" and an option for the value ~0 (that is, all bits set) with the name "Everything" are always displayed at the top of the menu. The names for the values 0 and ~0 can be overriden by defining these values in the enum type.</para>
+      </summary>
+      <param name="position">Rectangle on the screen to use for the enum flags field.</param>
+      <param name="label">Optional label to display in front of the enum flags field.</param>
+      <param name="enumValue">Enum flags value (Only supports enum values for enum types with int as the underlying type).</param>
+      <param name="style">Optional GUIStyle.</param>
+      <returns>
+        <para>The enum flags value modified by the user. This is a selection BitMask where each bit represents an Enum value index. (Note this returned value is not itself an Enum).</para>
+      </returns>
+    </member>
+    <member name="M:UnityEditor.EditorGUI.EnumFlagsField(UnityEngine.Rect,System.String,System.Enum)">
+      <summary>
+        <para>Displays a menu with an option for every value of the enum type when clicked. An option for the value 0 with name "Nothing" and an option for the value ~0 (that is, all bits set) with the name "Everything" are always displayed at the top of the menu. The names for the values 0 and ~0 can be overriden by defining these values in the enum type.</para>
+      </summary>
+      <param name="position">Rectangle on the screen to use for the enum flags field.</param>
+      <param name="label">Optional label to display in front of the enum flags field.</param>
+      <param name="enumValue">Enum flags value (Only supports enum values for enum types with int as the underlying type).</param>
+      <param name="style">Optional GUIStyle.</param>
+      <returns>
+        <para>The enum flags value modified by the user. This is a selection BitMask where each bit represents an Enum value index. (Note this returned value is not itself an Enum).</para>
+      </returns>
+    </member>
+    <member name="M:UnityEditor.EditorGUI.EnumFlagsField(UnityEngine.Rect,System.String,System.Enum,UnityEngine.GUIStyle)">
+      <summary>
+        <para>Displays a menu with an option for every value of the enum type when clicked. An option for the value 0 with name "Nothing" and an option for the value ~0 (that is, all bits set) with the name "Everything" are always displayed at the top of the menu. The names for the values 0 and ~0 can be overriden by defining these values in the enum type.</para>
+      </summary>
+      <param name="position">Rectangle on the screen to use for the enum flags field.</param>
+      <param name="label">Optional label to display in front of the enum flags field.</param>
+      <param name="enumValue">Enum flags value (Only supports enum values for enum types with int as the underlying type).</param>
+      <param name="style">Optional GUIStyle.</param>
+      <returns>
+        <para>The enum flags value modified by the user. This is a selection BitMask where each bit represents an Enum value index. (Note this returned value is not itself an Enum).</para>
+      </returns>
+    </member>
+    <member name="M:UnityEditor.EditorGUI.EnumFlagsField(UnityEngine.Rect,UnityEngine.GUIContent,System.Enum)">
+      <summary>
+        <para>Displays a menu with an option for every value of the enum type when clicked. An option for the value 0 with name "Nothing" and an option for the value ~0 (that is, all bits set) with the name "Everything" are always displayed at the top of the menu. The names for the values 0 and ~0 can be overriden by defining these values in the enum type.</para>
+      </summary>
+      <param name="position">Rectangle on the screen to use for the enum flags field.</param>
+      <param name="label">Optional label to display in front of the enum flags field.</param>
+      <param name="enumValue">Enum flags value (Only supports enum values for enum types with int as the underlying type).</param>
+      <param name="style">Optional GUIStyle.</param>
+      <returns>
+        <para>The enum flags value modified by the user. This is a selection BitMask where each bit represents an Enum value index. (Note this returned value is not itself an Enum).</para>
+      </returns>
+    </member>
+>>>>>>> 2c6c0c45358f84b4d9c163a39055cbea8e4ba6a2
     <member name="M:UnityEditor.EditorGUI.EnumFlagsField(UnityEngine.Rect,UnityEngine.GUIContent,System.Enum,UnityEngine.GUIStyle)">
       <summary>
         <para>Displays a menu with an option for every value of the enum type when clicked. An option for the value 0 with name "Nothing" and an option for the value ~0 (that is, all bits set) with the name "Everything" are always displayed at the top of the menu. The names for the values 0 and ~0 can be overriden by defining these values in the enum type.</para>
@@ -12216,6 +12284,7 @@ GUILayout.MaxHeight, GUILayout.ExpandWidth, GUILayout.ExpandHeight.</param>
       </returns>
     </member>
     <member name="M:UnityEditor.EditorGUILayout.Vector3Field(System.String,UnityEngine.Vector3,UnityEngine.GUILayoutOption[])">
+<<<<<<< HEAD
       <summary>
         <para>Make an X, Y &amp; Z field for entering a Vector3.</para>
       </summary>
@@ -12237,6 +12306,44 @@ GUILayout.MaxHeight, GUILayout.ExpandWidth, GUILayout.ExpandHeight.</param>
       <param name="value">The value to edit.</param>
       <param name="options">An optional list of layout options that specify extra layout
         properties. Any values passed in here will override settings defined by the style.&lt;br&gt;
+See Also: GUILayout.Width, GUILayout.Height, GUILayout.MinWidth, GUILayout.MaxWidth, GUILayout.MinHeight,
+GUILayout.MaxHeight, GUILayout.ExpandWidth, GUILayout.ExpandHeight.</param>
+      <returns>
+        <para>The value entered by the user.</para>
+      </returns>
+    </member>
+    <member name="M:UnityEditor.EditorGUILayout.Vector3IntField(System.String,UnityEngine.Vector3Int,UnityEngine.GUILayoutOption[])">
+=======
+>>>>>>> 2c6c0c45358f84b4d9c163a39055cbea8e4ba6a2
+      <summary>
+        <para>Make an X, Y &amp; Z integer field for entering a Vector3Int.</para>
+      </summary>
+      <param name="label">Label to display above the field.</param>
+      <param name="value">The value to edit.</param>
+<<<<<<< HEAD
+      <param name="options">An optional list of layout options that specify extra layout properties. Any values passed in here will override settings defined by the style.&lt;br&gt;
+=======
+      <param name="options">An optional list of layout options that specify extra layout
+        properties. Any values passed in here will override settings defined by the style.&lt;br&gt;
+>>>>>>> 2c6c0c45358f84b4d9c163a39055cbea8e4ba6a2
+See Also: GUILayout.Width, GUILayout.Height, GUILayout.MinWidth, GUILayout.MaxWidth, GUILayout.MinHeight,
+GUILayout.MaxHeight, GUILayout.ExpandWidth, GUILayout.ExpandHeight.</param>
+      <returns>
+        <para>The value entered by the user.</para>
+      </returns>
+    </member>
+    <member name="M:UnityEditor.EditorGUILayout.Vector3IntField(UnityEngine.GUIContent,UnityEngine.Vector3Int,UnityEngine.GUILayoutOption[])">
+      <summary>
+        <para>Make an X, Y &amp; Z integer field for entering a Vector3Int.</para>
+      </summary>
+      <param name="label">Label to display above the field.</param>
+      <param name="value">The value to edit.</param>
+<<<<<<< HEAD
+      <param name="options">An optional list of layout options that specify extra layout properties. Any values passed in here will override settings defined by the style.&lt;br&gt;
+=======
+      <param name="options">An optional list of layout options that specify extra layout
+        properties. Any values passed in here will override settings defined by the style.&lt;br&gt;
+>>>>>>> 2c6c0c45358f84b4d9c163a39055cbea8e4ba6a2
 See Also: GUILayout.Width, GUILayout.Height, GUILayout.MinWidth, GUILayout.MaxWidth, GUILayout.MinHeight,
 GUILayout.MaxHeight, GUILayout.ExpandWidth, GUILayout.ExpandHeight.</param>
       <returns>
@@ -13294,6 +13401,11 @@ This value is the number of screen pixels per point of interface space. For inst
         <para>Sets and gets Visual Studio version to build Windows Store application with.</para>
       </summary>
     </member>
+    <member name="P:UnityEditor.EditorUserBuildSettings.wsaUWPVisualStudioVersion">
+      <summary>
+        <para>Sets and gets Visual Studio version to build Windows Store application with.</para>
+      </summary>
+    </member>
     <member name="P:UnityEditor.EditorUserBuildSettings.xboxBuildSubtarget">
       <summary>
         <para>Xbox Build subtarget.</para>
@@ -14333,6 +14445,7 @@ More information - https:msdn.microsoft.comen-uslibrary/dn584397(v=vs.110).aspx.
     <member name="P:UnityEditor.Experimental.AssetImporters.AssetImportContext.selectedBuildTarget">
       <summary>
         <para>This indicates what platform the import event is targetting.</para>
+<<<<<<< HEAD
       </summary>
     </member>
     <member name="M:UnityEditor.Experimental.AssetImporters.AssetImportContext.AddObjectToAsset(System.String,UnityEngine.Object)">
@@ -14343,6 +14456,25 @@ More information - https:msdn.microsoft.comen-uslibrary/dn584397(v=vs.110).aspx.
       <param name="obj">The Unity Object to add to the asset.</param>
       <param name="thumbnail">An optional 2D texture to use as the tumbnail for this object.</param>
     </member>
+    <member name="M:UnityEditor.Experimental.AssetImporters.AssetImportContext.AddObjectToAsset(System.String,UnityEngine.Object,UnityEngine.Texture2D)">
+=======
+      </summary>
+    </member>
+    <member name="M:UnityEditor.Experimental.AssetImporters.AssetImportContext.AddObjectToAsset(System.String,UnityEngine.Object)">
+>>>>>>> 2c6c0c45358f84b4d9c163a39055cbea8e4ba6a2
+      <summary>
+        <para>Adds an object to the result of the import operation.</para>
+      </summary>
+      <param name="identifier">A unique identifier associated to this object.</param>
+      <param name="obj">The Unity Object to add to the asset.</param>
+      <param name="thumbnail">An optional 2D texture to use as the tumbnail for this object.</param>
+    </member>
+<<<<<<< HEAD
+    <member name="M:UnityEditor.Experimental.AssetImporters.AssetImportContext.SetMainObject(UnityEngine.Object)">
+      <summary>
+        <para>Specifies which object in the asset file should become the main object of the import opperation.</para>
+      </summary>
+=======
     <member name="M:UnityEditor.Experimental.AssetImporters.AssetImportContext.AddObjectToAsset(System.String,UnityEngine.Object,UnityEngine.Texture2D)">
       <summary>
         <para>Adds an object to the result of the import operation.</para>
@@ -14355,6 +14487,7 @@ More information - https:msdn.microsoft.comen-uslibrary/dn584397(v=vs.110).aspx.
       <summary>
         <para>Specifies which object in the asset file should become the main object of the import opperation.</para>
       </summary>
+>>>>>>> 2c6c0c45358f84b4d9c163a39055cbea8e4ba6a2
       <param name="obj">The Unity Object that is to be marked as the main object.</param>
     </member>
     <member name="T:UnityEditor.Experimental.AssetImporters.AssetImporterEditor">
@@ -15371,6 +15504,426 @@ If the Unity Editor setting "Auto-Update" is set to enabled, editing a script ou
       <param name="target">The target GameObject for the GridSelection.</param>
       <param name="bounds">The cell coordinates of selection made.</param>
     </member>
+    <member name="T:UnityEditor.GridBrush">
+      <summary>
+        <para>Default built-in brush for painting or erasing tiles and/or gamobjects on a grid.</para>
+      </summary>
+    </member>
+    <member name="P:UnityEditor.GridBrush.cellCount">
+      <summary>
+        <para>Number of brush cells in the brush.</para>
+      </summary>
+    </member>
+    <member name="P:UnityEditor.GridBrush.cells">
+      <summary>
+        <para>All the brush cells the brush holds.</para>
+      </summary>
+    </member>
+    <member name="P:UnityEditor.GridBrush.pivot">
+      <summary>
+        <para>Pivot of the brush.</para>
+      </summary>
+    </member>
+    <member name="P:UnityEditor.GridBrush.size">
+      <summary>
+        <para>Size of the brush in cells.</para>
+      </summary>
+    </member>
+    <member name="M:UnityEditor.GridBrush.BoxErase(UnityEngine.GridLayout,UnityEngine.GameObject,UnityEngine.BoundsInt)">
+      <summary>
+        <para>Erases tiles and GameObjects from given bounds within the selected layers.</para>
+      </summary>
+      <param name="gridLayout"> to erase data from.</param>
+      <param name="brushTarget">Target of the erase operation. By default the currently selected GameObject.</param>
+      <param name="position">The bounds to erase data from.</param>
+    </member>
+    <member name="M:UnityEditor.GridBrush.BoxFill(UnityEngine.GridLayout,UnityEngine.GameObject,UnityEngine.BoundsInt)">
+      <summary>
+        <para>Box fills tiles and GameObjects into given bounds within the selected layers.</para>
+      </summary>
+      <param name="gridLayout"> to box fill data to.</param>
+      <param name="brushTarget">Target of the box fill operation. By default the currently selected GameObject.</param>
+      <param name="position">The bounds to box fill data into.</param>
+    </member>
+    <member name="T:UnityEditor.GridBrush.BrushCell">
+      <summary>
+        <para>Brush Cell stores the data to be painted in a grid cell.</para>
+      </summary>
+    </member>
+    <member name="P:UnityEditor.GridBrush.BrushCell.color">
+      <summary>
+        <para>Color to tint the tile when painting.</para>
+      </summary>
+    </member>
+    <member name="P:UnityEditor.GridBrush.BrushCell.matrix">
+      <summary>
+        <para>The transform matrix of the brush cell.</para>
+      </summary>
+    </member>
+    <member name="P:UnityEditor.GridBrush.BrushCell.tile">
+      <summary>
+        <para>Tile to be placed when painting.</para>
+      </summary>
+    </member>
+    <member name="M:UnityEditor.GridBrush.Erase(UnityEngine.GridLayout,UnityEngine.GameObject,UnityEngine.Vector3Int)">
+      <summary>
+        <para>Erases tiles and GameObjects in a given position within the selected layers.</para>
+      </summary>
+      <param name="gridLayout"> used for layout.</param>
+      <param name="brushTarget">Target of the erase operation. By default the currently selected GameObject.</param>
+      <param name="position">The coordinates of the cell to erase data from.</param>
+    </member>
+    <member name="M:UnityEditor.GridBrush.Flip(UnityEngine.GridBrushBase/FlipAxis,UnityEngine.GridLayout/CellLayout)">
+      <summary>
+        <para>Flips the brush in the given axis.</para>
+      </summary>
+      <param name="flip">Axis to flip by.</param>
+      <param name="layout">Cell Layout for flipping.</param>
+    </member>
+    <member name="M:UnityEditor.GridBrush.FloodFill(UnityEngine.GridLayout,UnityEngine.GameObject,UnityEngine.Vector3Int)">
+      <summary>
+        <para>Flood fills tiles and GameObjects starting from a given position within the selected layers.</para>
+      </summary>
+      <param name="gridLayout">GridLayout used for layout.</param>
+      <param name="brushTarget">Target of the flood fill operation. By default the currently selected GameObject.</param>
+      <param name="position">Starting position of the flood fill.</param>
+    </member>
+    <member name="M:UnityEditor.GridBrush.GetCellIndex(UnityEngine.Vector3Int)">
+      <summary>
+        <para>Gets the index to the GridBrush.BrushCell based on the position of the BrushCell.</para>
+      </summary>
+      <param name="brushPosition">Position of the BrushCell.</param>
+      <param name="x">X Position of the BrushCell.</param>
+      <param name="y">Y Position of the BrushCell.</param>
+      <param name="z">Z Position of the BrushCell.</param>
+      <param name="sizex">X Size of Brush.</param>
+      <param name="sizey">Y Size of Brush.</param>
+      <param name="sizez">Z Size of Brush.</param>
+      <returns>
+        <para>Index to the BrushCell.</para>
+      </returns>
+    </member>
+    <member name="M:UnityEditor.GridBrush.GetCellIndex(System.Int32,System.Int32,System.Int32)">
+      <summary>
+        <para>Gets the index to the GridBrush.BrushCell based on the position of the BrushCell.</para>
+      </summary>
+      <param name="brushPosition">Position of the BrushCell.</param>
+      <param name="x">X Position of the BrushCell.</param>
+      <param name="y">Y Position of the BrushCell.</param>
+      <param name="z">Z Position of the BrushCell.</param>
+      <param name="sizex">X Size of Brush.</param>
+      <param name="sizey">Y Size of Brush.</param>
+      <param name="sizez">Z Size of Brush.</param>
+      <returns>
+        <para>Index to the BrushCell.</para>
+      </returns>
+    </member>
+    <member name="M:UnityEditor.GridBrush.GetCellIndex(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
+      <summary>
+        <para>Gets the index to the GridBrush.BrushCell based on the position of the BrushCell.</para>
+      </summary>
+      <param name="brushPosition">Position of the BrushCell.</param>
+      <param name="x">X Position of the BrushCell.</param>
+      <param name="y">Y Position of the BrushCell.</param>
+      <param name="z">Z Position of the BrushCell.</param>
+      <param name="sizex">X Size of Brush.</param>
+      <param name="sizey">Y Size of Brush.</param>
+      <param name="sizez">Z Size of Brush.</param>
+      <returns>
+        <para>Index to the BrushCell.</para>
+      </returns>
+    </member>
+    <member name="M:UnityEditor.GridBrush.GetCellIndexWrapAround(System.Int32,System.Int32,System.Int32)">
+      <summary>
+        <para>Gets the index to the GridBrush.BrushCell based on the position of the BrushCell. Wraps each coordinate if it is larger than the size of the GridBrush.</para>
+      </summary>
+      <param name="x">X Position of the BrushCell.</param>
+      <param name="y">Y Position of the BrushCell.</param>
+      <param name="z">Z Position of the BrushCell.</param>
+      <returns>
+        <para>Index to the BrushCell.</para>
+      </returns>
+    </member>
+    <member name="M:UnityEditor.GridBrush.Init(UnityEngine.Vector3Int)">
+      <summary>
+        <para>Initializes the content of the GridBrush.</para>
+      </summary>
+      <param name="size">Size of the GridBrush.</param>
+      <param name="pivot">Pivot point of the GridBrush.</param>
+    </member>
+    <member name="M:UnityEditor.GridBrush.Init(UnityEngine.Vector3Int,UnityEngine.Vector3Int)">
+      <summary>
+        <para>Initializes the content of the GridBrush.</para>
+      </summary>
+      <param name="size">Size of the GridBrush.</param>
+      <param name="pivot">Pivot point of the GridBrush.</param>
+    </member>
+    <member name="M:UnityEditor.GridBrush.MoveEnd(UnityEngine.GridLayout,UnityEngine.GameObject,UnityEngine.BoundsInt)">
+      <summary>
+        <para>MoveEnd is called when user has ended the move of the area previously selected with the selection marquee.</para>
+      </summary>
+      <param name="gridLayout"> used for layout.</param>
+      <param name="brushTarget">Target of the move operation. By default the currently selected GameObject.</param>
+      <param name="position">Position where the move operation has ended.</param>
+    </member>
+    <member name="M:UnityEditor.GridBrush.MoveStart(UnityEngine.GridLayout,UnityEngine.GameObject,UnityEngine.BoundsInt)">
+      <summary>
+        <para>MoveEnd is called when user starts moving the area previously selected with the selection marquee.</para>
+      </summary>
+      <param name="gridLayout"> used for layout.</param>
+      <param name="brushTarget">Target of the move operation. By default the currently selected GameObject.</param>
+      <param name="position">Position where the move operation has started.</param>
+    </member>
+    <member name="M:UnityEditor.GridBrush.Paint(UnityEngine.GridLayout,UnityEngine.GameObject,UnityEngine.Vector3Int)">
+      <summary>
+        <para>Paints tiles and GameObjects into a given position within the selected layers.</para>
+      </summary>
+      <param name="gridLayout"> used for layout.</param>
+      <param name="brushTarget">Target of the paint operation. By default the currently selected GameObject.</param>
+      <param name="position">The coordinates of the cell to paint data to.</param>
+    </member>
+    <member name="M:UnityEditor.GridBrush.Pick(UnityEngine.GridLayout,UnityEngine.GameObject,UnityEngine.BoundsInt,UnityEngine.Vector3Int)">
+      <summary>
+        <para>Picks tiles from selected and child GameObjects, given the coordinates of the cells.</para>
+      </summary>
+      <param name="gridLayout"> to pick data from.</param>
+      <param name="brushTarget">Target of the picking operation. By default the currently selected GameObject.</param>
+      <param name="position">The coordinates of the cells to paint data from.</param>
+      <param name="pickStart">Pivot of the picking brush.</param>
+    </member>
+    <member name="M:UnityEditor.GridBrush.Reset">
+      <summary>
+        <para>Clear all data of the brush.</para>
+      </summary>
+    </member>
+    <member name="M:UnityEditor.GridBrush.Rotate(UnityEngine.GridBrushBase/RotationDirection,UnityEngine.GridLayout/CellLayout)">
+      <summary>
+        <para>Rotates the brush by 90 degrees in the given direction.</para>
+      </summary>
+      <param name="direction">Direction to rotate by.</param>
+      <param name="layout">Cell Layout for rotating.</param>
+    </member>
+    <member name="M:UnityEditor.GridBrush.SetColor(UnityEngine.Vector3Int,UnityEngine.Color)">
+      <summary>
+        <para>Sets a tint color at the position in the brush.</para>
+      </summary>
+      <param name="position">Position to set the color in the brush.</param>
+      <param name="color">Tint color to set in the brush.</param>
+    </member>
+    <member name="M:UnityEditor.GridBrush.SetMatrix(UnityEngine.Vector3Int,UnityEngine.Matrix4x4)">
+      <summary>
+        <para>Sets a transform matrix at the position in the brush. This matrix is used specifically for tiles on a Tilemap and not GameObjects of the brush cell.</para>
+      </summary>
+      <param name="position">Position to set the transform matrix in the brush.</param>
+      <param name="matrix">Transform matrix to set in the brush.</param>
+    </member>
+    <member name="M:UnityEditor.GridBrush.SetTile(UnityEngine.Vector3Int,UnityEngine.Tilemaps.TileBase)">
+      <summary>
+        <para>Sets a Tile at the position in the brush.</para>
+      </summary>
+      <param name="position">Position to set the tile in the brush.</param>
+      <param name="tile">Tile to set in the brush.</param>
+    </member>
+    <member name="M:UnityEditor.GridBrush.UpdateSizeAndPivot(UnityEngine.Vector3Int,UnityEngine.Vector3Int)">
+      <summary>
+        <para>Updates the size, pivot and the number of layers of the brush.</para>
+      </summary>
+      <param name="size">New size of the brush.</param>
+      <param name="pivot">New pivot of the brush.</param>
+    </member>
+    <member name="T:UnityEditor.GridBrushEditor">
+      <summary>
+        <para>Editor for GridBrush.</para>
+      </summary>
+    </member>
+    <member name="P:UnityEditor.GridBrushEditor.brush">
+      <summary>
+        <para>The GridBrush that is the target for this editor.</para>
+      </summary>
+    </member>
+    <member name="P:UnityEditor.GridBrushEditor.validTargets">
+      <summary>
+        <para>Returns all valid targets that the brush can edit.</para>
+      </summary>
+    </member>
+    <member name="M:UnityEditor.GridBrushEditor.BoxFillPreview(UnityEngine.GridLayout,UnityEngine.GameObject,UnityEngine.BoundsInt)">
+      <summary>
+        <para>Does a preview of what happens when a GridBrush.BoxFill is done with the same parameters.</para>
+      </summary>
+      <param name="gridLayout"> to box fill data to.</param>
+      <param name="brushTarget">Target of box fill operation. By default the currently selected GameObject.</param>
+      <param name="position">The bounds to box fill data to.</param>
+    </member>
+    <member name="M:UnityEditor.GridBrushEditor.ClearPreview">
+      <summary>
+        <para>Clears any preview drawn previously by the GridBrushEditor.</para>
+      </summary>
+    </member>
+    <member name="M:UnityEditor.GridBrushEditor.FloodFillPreview(UnityEngine.GridLayout,UnityEngine.GameObject,UnityEngine.Vector3Int)">
+      <summary>
+        <para>Does a preview of what happens when a GridBrush.FloodFill is done with the same parameters.</para>
+      </summary>
+      <param name="gridLayout"> to paint data to.</param>
+      <param name="brushTarget">Target of the flood fill operation. By default the currently selected GameObject.</param>
+      <param name="position">The coordinates of the cell to flood fill data to.</param>
+    </member>
+    <member name="M:UnityEditor.GridBrushEditor.OnPaintSceneGUI(UnityEngine.GridLayout,UnityEngine.GameObject,UnityEngine.BoundsInt,UnityEngine.GridBrushBase/Tool,System.Boolean)">
+      <summary>
+        <para>Callback for painting the GUI for the GridBrush in the Scene View.</para>
+      </summary>
+      <param name="gridLayout"> that the brush is being used on.</param>
+      <param name="brushTarget">Target of the GridBrushBase.Tool operation. By default the currently selected GameObject.</param>
+      <param name="position">Current selected location of the brush.</param>
+      <param name="tool">Current GridBrushBase.Tool selected.</param>
+      <param name="executing">Whether brush is being used.</param>
+    </member>
+    <member name="M:UnityEditor.GridBrushEditor.OnSelectionInspectorGUI">
+      <summary>
+        <para>Callback for drawing the Inspector GUI when there is an active GridSelection made in a Tilemap.</para>
+      </summary>
+    </member>
+    <member name="M:UnityEditor.GridBrushEditor.PaintPreview(UnityEngine.GridLayout,UnityEngine.GameObject,UnityEngine.Vector3Int)">
+      <summary>
+        <para>Paints preview data into a cell of a grid given the coordinates of the cell.</para>
+      </summary>
+      <param name="gridLayout"> to paint data to.</param>
+      <param name="brushTarget">Target of the paint operation. By default the currently selected GameObject.</param>
+      <param name="position">The coordinates of the cell to paint data to.</param>
+    </member>
+    <member name="M:UnityEditor.GridBrushEditor.RegisterUndo(UnityEngine.GameObject,UnityEngine.GridBrushBase/Tool)">
+      <summary>
+        <para>Callback for registering an Undo action before the GridBrushBase does the current GridBrushBase.Tool action.</para>
+      </summary>
+      <param name="brushTarget">Target of the GridBrushBase.Tool operation. By default the currently selected GameObject.</param>
+      <param name="tool">Current GridBrushBase.Tool selected.</param>
+    </member>
+    <member name="T:UnityEditor.GridBrushEditorBase">
+      <summary>
+        <para>Base class for Grid Brush Editor.</para>
+      </summary>
+    </member>
+    <member name="P:UnityEditor.GridBrushEditorBase.validTargets">
+      <summary>
+        <para>Returns all valid targets that the brush can edit.</para>
+      </summary>
+    </member>
+    <member name="M:UnityEditor.GridBrushEditorBase.OnMouseEnter">
+      <summary>
+        <para>Callback when the mouse cursor enters a paintable region.</para>
+      </summary>
+    </member>
+    <member name="M:UnityEditor.GridBrushEditorBase.OnMouseLeave">
+      <summary>
+        <para>Callback when the mouse cursor leaves a paintable region.</para>
+      </summary>
+    </member>
+    <member name="M:UnityEditor.GridBrushEditorBase.OnPaintInspectorGUI">
+      <summary>
+        <para>Callback for painting the inspector GUI for the GridBrush in the tilemap palette.</para>
+      </summary>
+    </member>
+    <member name="M:UnityEditor.GridBrushEditorBase.OnPaintSceneGUI(UnityEngine.GridLayout,UnityEngine.GameObject,UnityEngine.BoundsInt,UnityEngine.GridBrushBase/Tool,System.Boolean)">
+      <summary>
+        <para>Callback for painting the GUI for the GridBrush in the Scene view.</para>
+      </summary>
+      <param name="gridLayout"> that the brush is being used on.</param>
+      <param name="brushTarget">Target of the GridBrushBase.Tool operation. By default the currently selected GameObject.</param>
+      <param name="position">Current selected location of the brush.</param>
+      <param name="tool">Current GridBrushBase.Tool selected.</param>
+      <param name="executing">Whether is brush is being used.</param>
+    </member>
+    <member name="M:UnityEditor.GridBrushEditorBase.OnSelectionInspectorGUI">
+      <summary>
+        <para>Callback for drawing the Inspector GUI when there is an active GridSelection made in a GridLayout.</para>
+      </summary>
+    </member>
+    <member name="M:UnityEditor.GridBrushEditorBase.OnToolActivated(UnityEngine.GridBrushBase/Tool)">
+      <summary>
+        <para>Callback when a GridBrushBase.Tool is activated.</para>
+      </summary>
+      <param name="tool">Tool that is activated.</param>
+    </member>
+    <member name="M:UnityEditor.GridBrushEditorBase.OnToolDeactivated(UnityEngine.GridBrushBase/Tool)">
+      <summary>
+        <para>Callback when a GridBrushBase.Tool is deactivated.</para>
+      </summary>
+      <param name="tool">Tool that is deactivated.</param>
+    </member>
+    <member name="M:UnityEditor.GridBrushEditorBase.RegisterUndo(UnityEngine.GameObject,UnityEngine.GridBrushBase/Tool)">
+      <summary>
+        <para>Callback for registering an Undo action before the GridBrushBase does the current GridBrushBase.Tool action.</para>
+      </summary>
+      <param name="brushTarget">Target of the GridBrushBase.Tool operation. By default the currently selected GameObject.</param>
+      <param name="tool">Current GridBrushBase.Tool selected.</param>
+    </member>
+    <member name="T:UnityEditor.GridPalette">
+      <summary>
+        <para>GridPalette stores settings for Palette assets when shown in the Palette window.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEditor.GridPalette.cellSizing">
+      <summary>
+        <para>Determines the sizing of cells for a Palette.</para>
+      </summary>
+    </member>
+    <member name="T:UnityEditor.GridPalette.CellSizing">
+      <summary>
+        <para>Controls the sizing of cells for a Palette.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEditor.GridPalette.CellSizing.Automatic">
+      <summary>
+        <para>Automatically resizes the Palette cells by the size of Sprites in the Palette.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEditor.GridPalette.CellSizing.Manual">
+      <summary>
+        <para>Size of Palette cells will be changed manually by the user.</para>
+      </summary>
+    </member>
+    <member name="T:UnityEditor.GridSelection">
+      <summary>
+        <para>Stores the selection made on a GridLayout.</para>
+      </summary>
+    </member>
+    <member name="P:UnityEditor.GridSelection.active">
+      <summary>
+        <para>Whether there is an active GridSelection made on a GridLayout.</para>
+      </summary>
+    </member>
+    <member name="P:UnityEditor.GridSelection.grid">
+      <summary>
+        <para>The Grid of the target of the active GridSelection.</para>
+      </summary>
+    </member>
+    <member name="?:UnityEditor.GridSelection.gridSelectionChanged(System.Action)">
+      <summary>
+        <para>Callback for when the active GridSelection has changed.</para>
+      </summary>
+      <param name="value">Callback.</param>
+    </member>
+    <member name="P:UnityEditor.GridSelection.position">
+      <summary>
+        <para>The cell coordinates of the active GridSelection made on the GridLayout.</para>
+      </summary>
+    </member>
+    <member name="P:UnityEditor.GridSelection.target">
+      <summary>
+        <para>The GameObject of the GridLayout where the active GridSelection was made.</para>
+      </summary>
+    </member>
+    <member name="M:UnityEditor.GridSelection.Clear">
+      <summary>
+        <para>Clears the active GridSelection.</para>
+      </summary>
+    </member>
+    <member name="M:UnityEditor.GridSelection.Select(UnityEngine.Object,UnityEngine.BoundsInt)">
+      <summary>
+        <para>Creates a new GridSelection and sets it as the active GridSelection.</para>
+      </summary>
+      <param name="target">The target GameObject for the GridSelection.</param>
+      <param name="bounds">The cell coordinates of selection made.</param>
+    </member>
     <member name="T:UnityEditor.GUIDrawer">
       <summary>
         <para>Base class for PropertyDrawer and DecoratorDrawer.</para>
@@ -15409,6 +15962,11 @@ If the Unity Editor setting "Auto-Update" is set to enabled, editing a script ou
     <member name="P:UnityEditor.Handles.matrix">
       <summary>
         <para>Matrix for all handle operations.</para>
+      </summary>
+    </member>
+    <member name="P:UnityEditor.Handles.preselectionColor">
+      <summary>
+        <para>Color to use to highlight an unselected handle currently under the mouse pointer.</para>
       </summary>
     </member>
     <member name="P:UnityEditor.Handles.preselectionColor">
@@ -18760,6 +19318,41 @@ GUILayout.MaxHeight, GUILayout.ExpandWidth, GUILayout.ExpandHeight.</param>
         <para>A light status bar, intended for use on dark backgrounds.</para>
       </summary>
     </member>
+    <member name="T:UnityEditor.iOSSystemGestureDeferMode">
+      <summary>
+        <para>Bit-mask used to control the deferring of system gestures on iOS.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEditor.iOSSystemGestureDeferMode.All">
+      <summary>
+        <para>Identifies all screen edges.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEditor.iOSSystemGestureDeferMode.BottomEdge">
+      <summary>
+        <para>Identifies bottom screen edge.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEditor.iOSSystemGestureDeferMode.LeftEdge">
+      <summary>
+        <para>Identifies left screen edge.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEditor.iOSSystemGestureDeferMode.None">
+      <summary>
+        <para>Disables gesture deferring on all edges.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEditor.iOSSystemGestureDeferMode.RightEdge">
+      <summary>
+        <para>Identifies right screen edge.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEditor.iOSSystemGestureDeferMode.TopEdge">
+      <summary>
+        <para>Identifies top screen edge.</para>
+      </summary>
+    </member>
     <member name="T:UnityEditor.iOSTargetDevice">
       <summary>
         <para>Target iOS device.</para>
@@ -19003,6 +19596,7 @@ GUILayout.MaxHeight, GUILayout.ExpandWidth, GUILayout.ExpandHeight.</param>
     <member name="F:UnityEditor.LightmapEditorSettings.Lightmapper.Enlighten">
       <summary>
         <para>Backend for baking lightmaps with the Enlighten radiosity middleware.</para>
+<<<<<<< HEAD
       </summary>
     </member>
     <member name="F:UnityEditor.LightmapEditorSettings.Lightmapper.ProgressiveCPU">
@@ -19015,6 +19609,20 @@ GUILayout.MaxHeight, GUILayout.ExpandWidth, GUILayout.ExpandHeight.</param>
         <para>Available sampling strategies for baking lightmaps with the Progressive Lightmapper.</para>
       </summary>
     </member>
+=======
+      </summary>
+    </member>
+    <member name="F:UnityEditor.LightmapEditorSettings.Lightmapper.ProgressiveCPU">
+      <summary>
+        <para>Backend for baking lightmaps using progressive path tracing.</para>
+      </summary>
+    </member>
+    <member name="T:UnityEditor.LightmapEditorSettings.Sampling">
+      <summary>
+        <para>Available sampling strategies for baking lightmaps with the Progressive Lightmapper.</para>
+      </summary>
+    </member>
+>>>>>>> 2c6c0c45358f84b4d9c163a39055cbea8e4ba6a2
     <member name="F:UnityEditor.LightmapEditorSettings.Sampling.Auto">
       <summary>
         <para>Auto will automatically select the sampling settings.</para>
@@ -21014,6 +21622,20 @@ Notes:
     </member>
     <member name="M:UnityEditor.ModelImporter.ExtractTextures(System.String)">
       <summary>
+<<<<<<< HEAD
+        <para>Combine vertices that share the same position in space.</para>
+      </summary>
+    </member>
+    <member name="M:UnityEditor.ModelImporter.CreateDefaultMaskForClip(UnityEditor.ModelImporterClipAnimation)">
+      <summary>
+        <para>Creates a mask that matches the model hierarchy, and applies it to the provided ModelImporterClipAnimation.</para>
+      </summary>
+      <param name="clip">Clip to which the mask will be applied.</param>
+    </member>
+    <member name="M:UnityEditor.ModelImporter.ExtractTextures(System.String)">
+      <summary>
+=======
+>>>>>>> 2c6c0c45358f84b4d9c163a39055cbea8e4ba6a2
         <para>Extracts the embedded textures from a model file (such as FBX or SketchUp).</para>
       </summary>
       <param name="folderPath">The directory where the textures will be extracted.</param>
@@ -23180,11 +23802,14 @@ See Also: PhysicsVisualizationSettings.</para>
         <para>Defer system gestures until the second swipe on specific edges.</para>
       </summary>
     </member>
+<<<<<<< HEAD
+=======
     <member name="P:UnityEditor.PlayerSettings.iOS.deferSystemGesturesMode">
       <summary>
         <para>Defer system gestures until the second swipe on specific edges.</para>
       </summary>
     </member>
+>>>>>>> 2c6c0c45358f84b4d9c163a39055cbea8e4ba6a2
     <member name="P:UnityEditor.PlayerSettings.iOS.disableDepthAndStencilBuffers">
       <summary>
         <para>Disable Depth and Stencil Buffers.</para>

@@ -468,5 +468,15 @@ public class OVRPlayerController : MonoBehaviour
 			transform.rotation = Quaternion.Euler(euler);
 		}
 	}
+
+    public void IgnoreGrapperObj(OVRGrabbable m_grabbedObj) // Heikki added for test, When object grabbed ignore collision with player
+    {
+        Physics.IgnoreCollision(m_grabbedObj.GetComponent<Collider>(), Controller);
+    }
+
+    public void StopIgnore(OVRGrabbable m_grabbedObj) // Heikki added for test, Stop ignoring collision with player
+    {
+        Physics.IgnoreCollision(m_grabbedObj.GetComponent<Collider>(), Controller, false);
+    }
 }
 
