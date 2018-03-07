@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Teleporting : MonoBehaviour {
+public class Teleporting : MonoBehaviour
+{
 
     public GameObject Controller;
     GameObject RHP_Object; //Raycast Hit Point Object
@@ -11,60 +12,71 @@ public class Teleporting : MonoBehaviour {
     bool CanTeleport;
     Vector3 TPosition;
     GameManager GMscript;
+    private SteamVR_Controller.Device device;
+    public SteamVR_TrackedObject controller;
+    bool touchpadDown; //used to check if touchpad button is clicked
 
-    void Start () {
+    void Start()
+    {
         //Take reference to controller
         Controller = gameObject;
         RHP_Object = GameObject.Find("TeleporterIndicator(Clone)");
         RHP_Render = RHP_Object.GetComponent<Renderer>();
         CanTeleport = false;
         GMscript = GameObject.Find("GameManager").GetComponent<GameManager>();
+        controller = GetComponent<SteamVR_TrackedObject>();
+        device = SteamVR_Controller.Input((int)controller.index);
+        touchpadDown = false;
+
     }
 
     void Update()
     {
-        if (GMscript.VRModel == "Oculus Rift CV1")
+        if (GMscript)
         {
-            if (Input.GetButtonDown("Submit")) // When the button is pressed down
+            if (GMscript.VRModel == "Oculus Rift CV1")
             {
-                ShowIndicator = true;
-            }
-            if (Input.GetButtonUp("Submit"))// When the button is released
-            {
-                ShowIndicator = false;
-                // Move player object to wherever the raycast hit point is at
-                if (CanTeleport)
+                if (Input.GetButtonDown("Submit")) // When the button is pressed down
                 {
-                    transform.parent.parent.parent.position = TPosition;
-                    CanTeleport = false;
-                    RendererEnabled(CanTeleport);
+                    ShowIndicator = true;
+                }
+                if (Input.GetButtonUp("Submit"))// When the button is released
+                {
+                    ShowIndicator = false;
+                    // Move player object to wherever the raycast hit point is at
+                    if (CanTeleport)
+                    {
+                        transform.parent.parent.parent.position = TPosition;
+                        CanTeleport = false;
+                        RendererEnabled(CanTeleport);
+                    }
+                }
+            }
+            else if (GMscript.VRModel == "Vive MV")
+            {
+                if (device.GetPressDown(Valve.VR.EVRButtonId.k_EButton_SteamVR_Touchpad))
+                {
+                    ShowIndicator = true;
+                }
+                if (device.GetPressUp(Valve.VR.EVRButtonId.k_EButton_SteamVR_Touchpad))
+                {
+                    ShowIndicator = false;
+                    // Move player object to wherever the raycast hit point is at
+                    if (CanTeleport)
+                    {
+                        transform.parent.parent.position = TPosition;
+                        CanTeleport = false;
+                        RendererEnabled(CanTeleport);
+                    }
                 }
             }
         }
-       /* else if (GMscript.VRModel == "Vive MV")
-        {
-            if (Input.GetDown(KeyCode.Joystick1Button9)) // When on trackpad touch is above middle and trackpad button is pressed. // TÄMÄ EI TOIMI KORJAA TÄMÄ !!!!!
-            {
-                ShowIndicator = true;
-                Debug.Log("trackpad button is pressed!!!!");
-            }
-            if (Input.GetButtonUp("Submit"))// When the button is released
-            {
-                ShowIndicator = false;
-                // Move player object to wherever the raycast hit point is at
-                if (CanTeleport)
-                {
-                    transform.parent.parent.parent.position = TPosition;
-                    CanTeleport = false;
-                    RendererEnabled(CanTeleport);
-                }
-            }
-        }*/
 
     }
 
-    void FixedUpdate () {
-		if (ShowIndicator)
+    void FixedUpdate()
+    {
+        if (ShowIndicator)
         {
             // Raycast forward from Controller
             RaycastHit hit;
@@ -78,7 +90,7 @@ public class Teleporting : MonoBehaviour {
                     CanTeleport = true;
                 }
                 else
-                { 
+                {
                     CanTeleport = false;
                 }
                 RendererEnabled(CanTeleport);
@@ -88,6 +100,6 @@ public class Teleporting : MonoBehaviour {
 
     void RendererEnabled(bool b)
     {
-        RHP_Render.enabled = b; 
+        RHP_Render.enabled = b;
     }
 }

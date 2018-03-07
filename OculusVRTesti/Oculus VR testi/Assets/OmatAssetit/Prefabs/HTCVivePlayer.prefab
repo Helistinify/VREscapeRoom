@@ -20,6 +20,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4877415474348056}
   - component: {fileID: 114223896644775450}
+  - component: {fileID: 114540059398065112}
+  - component: {fileID: 114051051734072244}
   m_Layer: 0
   m_Name: Controller (right)
   m_TagString: Untagged
@@ -68,6 +70,7 @@ GameObject:
   - component: {fileID: 4620504141647026}
   - component: {fileID: 114585082864289224}
   - component: {fileID: 114887884669004010}
+  - component: {fileID: 114184008610675484}
   m_Layer: 0
   m_Name: Controller (left)
   m_TagString: Untagged
@@ -445,6 +448,24 @@ Behaviour:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1592158899750982}
   m_Enabled: 1
+--- !u!114 &114051051734072244
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1152217522973618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7346a42905a29b347b1f492e8ad7b49f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controllerIndex: 0
+  triggerPressed: 0
+  steamPressed: 0
+  menuPressed: 0
+  padPressed: 0
+  padTouched: 0
+  gripped: 0
 --- !u!114 &114141788400592524
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -474,6 +495,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vrcam: {fileID: 0}
+--- !u!114 &114184008610675484
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1349046280441944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7346a42905a29b347b1f492e8ad7b49f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controllerIndex: 0
+  triggerPressed: 0
+  steamPressed: 0
+  menuPressed: 0
+  padPressed: 0
+  padTouched: 0
+  gripped: 0
 --- !u!114 &114223896644775450
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -500,6 +539,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: 0
   origin: {fileID: 0}
+--- !u!114 &114540059398065112
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1152217522973618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64b858e95294ec14ba734a19784884d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Controller: {fileID: 1152217522973618}
+  controller: {fileID: 0}
 --- !u!114 &114585082864289224
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -567,6 +619,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Controller: {fileID: 1349046280441944}
+  controller: {fileID: 0}
 --- !u!114 &114962506585311454
 MonoBehaviour:
   m_ObjectHideFlags: 1
