@@ -223,7 +223,7 @@ public class OVRManager : MonoBehaviour
 			if (!_hasXRFocusCached)
 			{
 				_hasXRFocusCached = true;
-				_hasXRFocus = OVRPlugin.hasXRFocus;
+				_hasXRFocus = OVRPlugin.hasVrFocus;
 			}
 
 			return _hasXRFocus;
@@ -1054,7 +1054,7 @@ public class OVRManager : MonoBehaviour
 
 		// Dispatch XR Focus events.
 
-		hasXRFocus = OVRPlugin.hasXRFocus;
+		hasXRFocus = OVRPlugin.hasVrFocus;
 
 		if (_hadXRFocus && !hasXRFocus)
 		{
@@ -1153,19 +1153,19 @@ public class OVRManager : MonoBehaviour
 
 		if (enableAdaptiveResolution)
 		{
-			if (XR.XRSettings.renderScale < maxRenderScale)
+			if (XR.XRSettings.eyeTextureResolutionScale < maxRenderScale)
 			{
 				// Allocate renderScale to max to avoid re-allocation
-				XR.XRSettings.renderScale = maxRenderScale;
+				XR.XRSettings.eyeTextureResolutionScale = maxRenderScale;
 			}
 			else
 			{
 				// Adjusting maxRenderScale in case app started with a larger renderScale value
-				maxRenderScale = Mathf.Max(maxRenderScale, XR.XRSettings.renderScale);
+				maxRenderScale = Mathf.Max(maxRenderScale, XR.XRSettings.eyeTextureResolutionScale);
 			}
 			minRenderScale = Mathf.Min(minRenderScale, maxRenderScale);
-			float minViewportScale = minRenderScale / XR.XRSettings.renderScale;
-			float recommendedViewportScale = OVRPlugin.GetEyeRecommendedResolutionScale() / XR.XRSettings.renderScale;
+			float minViewportScale = minRenderScale / XR.XRSettings.eyeTextureResolutionScale;
+			float recommendedViewportScale = OVRPlugin.GetEyeRecommendedResolutionScale() / XR.XRSettings.eyeTextureResolutionScale;
 			recommendedViewportScale = Mathf.Clamp(recommendedViewportScale, minViewportScale, 1.0f);
 			XR.XRSettings.renderViewportScale = recommendedViewportScale;
 		}
