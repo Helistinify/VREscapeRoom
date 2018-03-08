@@ -15,6 +15,7 @@ public class Teleporting : MonoBehaviour
     private SteamVR_Controller.Device device;
     public SteamVR_TrackedObject controller;
     bool touchpadDown; //used to check if touchpad button is clicked
+    Vector2 touchpadFingerPos;
 
     void Start()
     {
@@ -54,7 +55,11 @@ public class Teleporting : MonoBehaviour
             }
             else if (GMscript.VRModel == "Vive MV")
             {
-                if (device.GetPressDown(Valve.VR.EVRButtonId.k_EButton_SteamVR_Touchpad))
+                if (device.GetTouch(Valve.VR.EVRButtonId.k_EButton_SteamVR_Touchpad))
+                {
+                    touchpadFingerPos = device.GetAxis(Valve.VR.EVRButtonId.k_EButton_SteamVR_Touchpad);
+                }
+                if (device.GetPressDown(Valve.VR.EVRButtonId.k_EButton_SteamVR_Touchpad) && touchpadFingerPos.y > 0.5f)
                 {
                     ShowIndicator = true;
                 }
