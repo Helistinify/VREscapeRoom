@@ -5,25 +5,49 @@ using UnityEngine;
 public class Interactable_item : MonoBehaviour {
 
     //This script should be added to all items the player can interact with
+    //The interactable item should also have a rigidbody for this to work.
 
-    public Rigidbody rb;
-    public bool currentlyInteracting;
+    public Rigidbody rb;//oh please...
+    public bool currentlyInteracting;//this should be selfexplanatory
     private HTC_ViveGrab grabCrab; //this is the grabbing script
-    private Transform interactionPoint;
+    private Transform interactionPoint;//why even wonder what this is
+
+    private Vector3 posDelta;
+    private Vector3 axis;
+
+    private Quaternion rotationDelta;
+
+    private float angle;
+    private float rotationFactor = 400f;
+    private float velocityFactor = 20000f;
 
 	// Use this for initialization
 	void Start () {
         rb = GetComponent<Rigidbody>();
         interactionPoint = new GameObject().transform;
-	}
+        velocityFactor /= rb.mass;//the more heavier the object, the slower it's able to move
+    }
 	
 	// Update is called once per frame
 	void Update ()
     {
+        if (grabCrab && currentlyInteracting)
+        {
+            posDelta = grabCrab.transform.position - interactionPoint.position;
+            this.rb.velocity = posDelta * velocityFactor * Time.fixedDeltaTime;
+            rotationDelta = grabCrab.transform.rotation * Quaternion.Inverse(interactionPoint.rotation);
+            rotationDelta.ToAngleAxis(out angle, out axis);
 
+            if(angle > 180)
+            {
+                angle -= 360;
+            }
+
+            this.rb.angularVelocity = (Time.fixedDeltaTime *angle* axis)*rotationFactor;//Heavier object is harder to rotate
+        }
 	}
 
-    void beginInteraction(HTC_ViveGrab grab)
+    public void beginInteraction(HTC_ViveGrab grab)
     {
         grabCrab = grab; //set grabCrab to grab
         interactionPoint.position = grab.transform.position; //position of grabbing
@@ -33,7 +57,7 @@ public class Interactable_item : MonoBehaviour {
         currentlyInteracting = true;
     }
 
-    void endInteraction(HTC_ViveGrab grab)
+    public void endInteraction(HTC_ViveGrab grab)
     {
         if(grabCrab == grab)
         {
