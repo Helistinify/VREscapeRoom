@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 114081970289427440}
   m_Layer: 0
   m_Name: GameManager
-  m_TagString: Untagged
+  m_TagString: GameManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -57,3 +57,4 @@ MonoBehaviour:
   VRDToSpawn: {fileID: 0}
   TeleporterIndicator: {fileID: 1505983538393886, guid: d5127ba56b2c16f4297ed90593dac523,
     type: 2}
+  VRModel: 

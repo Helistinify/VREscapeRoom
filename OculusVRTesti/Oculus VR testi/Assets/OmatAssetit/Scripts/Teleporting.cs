@@ -1,15 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR;
 
 public class Teleporting : MonoBehaviour
 {
 
     public GameObject Controller;
+    GameObject RHP_Object_Grandparent;
     GameObject RHP_Object; //Raycast Hit Point Object
     Renderer RHP_Render; //Raycast Hit Point Renderer
     bool ShowIndicator;
-    bool CanTeleport;
     Vector3 TPosition;
     GameManager GMscript;
     private SteamVR_Controller.Device device;
@@ -21,21 +22,32 @@ public class Teleporting : MonoBehaviour
     {
         //Take reference to controller
         Controller = gameObject;
-        RHP_Object = GameObject.Find("TeleporterIndicator(Clone)");
+        if (XRDevice.model == "Oculus Rift CV1")
+        {
+            RHP_Object_Grandparent = gameObject.transform.parent.parent.parent.gameObject;
+        } else if(XRDevice.model == "Vive MV")
+        {
+            RHP_Object_Grandparent = gameObject.transform.parent.parent.gameObject;
+        }
+        RHP_Object = RHP_Object_Grandparent.transform.Find("TeleporterIndicator(Clone)").gameObject;
         RHP_Render = RHP_Object.GetComponent<Renderer>();
-        CanTeleport = false;
-        GMscript = GameObject.Find("GameManager").GetComponent<GameManager>();
-        controller = GetComponent<SteamVR_TrackedObject>();
-        device = SteamVR_Controller.Input((int)controller.index);
-        touchpadDown = false;
 
+        transform.parent.parent.GetComponent<CheckBoolsCrouchTeleporting>().setCanTeleport(false);
+
+        GMscript = GameObject.Find("GameManager").GetComponent<GameManager>();
+        if (XRDevice.model == "Vive MV")
+        {
+            controller = GetComponent<SteamVR_TrackedObject>();
+            device = SteamVR_Controller.Input((int)controller.index);
+        }
+        touchpadDown = false;
+        ShowIndicator = false;
+        RHP_Render.enabled = false;
     }
 
     void Update()
     {
-        if (GMscript)
-        {
-            if (GMscript.VRModel == "Oculus Rift CV1")
+            if (XRDevice.model == "Oculus Rift CV1")
             {
                 if (Input.GetButtonDown("Submit")) // When the button is pressed down
                 {
@@ -45,37 +57,39 @@ public class Teleporting : MonoBehaviour
                 {
                     ShowIndicator = false;
                     // Move player object to wherever the raycast hit point is at
-                    if (CanTeleport)
+                    if (transform.parent.parent.GetComponent<CheckBoolsCrouchTeleporting>().getCanTeleport())
                     {
                         transform.parent.parent.parent.position = TPosition;
-                        CanTeleport = false;
-                        RendererEnabled(CanTeleport);
+                        transform.parent.parent.GetComponent<CheckBoolsCrouchTeleporting>().setCanTeleport(false);
+                        RendererEnabled(transform.parent.parent.GetComponent<CheckBoolsCrouchTeleporting>().getCanTeleport());
                     }
                 }
             }
-            else if (GMscript.VRModel == "Vive MV")
+            else if (XRDevice.model == "Vive MV")
             {
                 if (device.GetTouch(Valve.VR.EVRButtonId.k_EButton_SteamVR_Touchpad))
                 {
                     touchpadFingerPos = device.GetAxis(Valve.VR.EVRButtonId.k_EButton_SteamVR_Touchpad);
                 }
-                if (device.GetPressDown(Valve.VR.EVRButtonId.k_EButton_SteamVR_Touchpad) && touchpadFingerPos.y > 0.5f)
+                if (device.GetPressDown(Valve.VR.EVRButtonId.k_EButton_SteamVR_Touchpad) && touchpadFingerPos.y > 0.5f && transform.parent.parent.GetComponent<CheckBoolsCrouchTeleporting>().getWhichController() == null)
                 {
+                    transform.parent.parent.GetComponent<CheckBoolsCrouchTeleporting>().setWhichController(gameObject);
                     ShowIndicator = true;
                 }
-                if (device.GetPressUp(Valve.VR.EVRButtonId.k_EButton_SteamVR_Touchpad))
+                if (device.GetPressUp(Valve.VR.EVRButtonId.k_EButton_SteamVR_Touchpad) && transform.parent.parent.GetComponent<CheckBoolsCrouchTeleporting>().getWhichController() != null 
+                && transform.parent.parent.GetComponent<CheckBoolsCrouchTeleporting>().getWhichController().transform.name == transform.name)
                 {
                     ShowIndicator = false;
                     // Move player object to wherever the raycast hit point is at
-                    if (CanTeleport)
+                    if (transform.parent.parent.GetComponent<CheckBoolsCrouchTeleporting>().getCanTeleport())
                     {
                         transform.parent.parent.position = TPosition;
-                        CanTeleport = false;
-                        RendererEnabled(CanTeleport);
+                        transform.parent.parent.GetComponent<CheckBoolsCrouchTeleporting>().setCanTeleport(false);
+                        RendererEnabled(transform.parent.parent.GetComponent<CheckBoolsCrouchTeleporting>().getCanTeleport());
                     }
                 }
             }
-        }
+        
 
     }
 
@@ -88,17 +102,17 @@ public class Teleporting : MonoBehaviour
             if (Physics.Raycast(transform.position, transform.forward, out hit)) // Also check if raycast hit not touching an object with tag "Wall"
             {
                 // Move an object to the raycast hit point
-                if (hit.transform.tag == "Ground")
+                if (hit.transform.tag == "Ground" && !transform.parent.parent.GetComponent<CheckBoolsCrouchTeleporting>().getIsCrouching())//if target is ground and is not crounching can teleport
                 {
                     RHP_Object.transform.position = hit.point;
                     TPosition = hit.point;
-                    CanTeleport = true;
+                    transform.parent.parent.GetComponent<CheckBoolsCrouchTeleporting>().setCanTeleport(true);
                 }
                 else
                 {
-                    CanTeleport = false;
+                    transform.parent.parent.GetComponent<CheckBoolsCrouchTeleporting>().setCanTeleport(false);
                 }
-                RendererEnabled(CanTeleport);
+                RendererEnabled(transform.parent.parent.GetComponent<CheckBoolsCrouchTeleporting>().getCanTeleport());
             }
         }
     }
@@ -107,4 +121,10 @@ public class Teleporting : MonoBehaviour
     {
         RHP_Render.enabled = b;
     }
+
+    public SteamVR_Controller.Device GetDevice()
+    {
+        return device;
+    }
+
 }

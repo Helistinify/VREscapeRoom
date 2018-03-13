@@ -7,23 +7,31 @@ public class GameManager : MonoBehaviour {
 
     public GameObject VivePlayer;
     public GameObject OculusPlayer;
-    public GameObject VRDToSpawn;
+    List<GameObject> VRDToSpawn = new List<GameObject>();
     public GameObject TeleporterIndicator;
-    public string VRModel;
+    public List<string> VRModel = new List<string>();
+    private int players;
 
     private void Awake() // Check before the game is loaded for what device the player is using.
     {
-        VRModel = XRDevice.model;
+        players = 0;
+    }
 
-        if (VRModel == "Oculus Rift CV1") // CHANGE VRDevice to XRDevice when updating !!!
+    public void saveModelName(string deviceName)
+    {
+        VRModel.Add(deviceName);
+
+        if (VRModel[players] == "Oculus Rift CV1") // CHANGE VRDevice to XRDevice when updating !!!
         {
             Debug.Log("Oculus connected");
-            VRDToSpawn = OculusPlayer;
+            VRDToSpawn.Add(OculusPlayer);
+            players++;
         }
-        else if (VRModel == "Vive MV") // CHANGE VRDevice to XRDevice when updating !!!
+        else if (VRModel[players] == "Vive MV") // CHANGE VRDevice to XRDevice when updating !!!
         {
             Debug.Log("Vive connected");
-            VRDToSpawn = VivePlayer;
+            VRDToSpawn.Add(VivePlayer);
+            players++;
         }
         else
         {
@@ -31,16 +39,11 @@ public class GameManager : MonoBehaviour {
         }
     }
 
-
     // Use this for initialization
     void Start () {
-        Instantiate(TeleporterIndicator, new Vector3(0, 0, 0), Quaternion.identity); //
-        Instantiate(VRDToSpawn, new Vector3(0, 2.3f, 0), Quaternion.identity); //Spawn the correct player prefab
+        //Instantiate(TeleporterIndicator, new Vector3(0, 0, 0), Quaternion.identity); //
+        //Instantiate(VRDToSpawn, new Vector3(0, 2.3f, 0), Quaternion.identity); //Spawn the correct player prefab
 
     }
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
 }

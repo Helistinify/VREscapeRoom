@@ -15,7 +15,7 @@ public class HTC_ViveGrab : MonoBehaviour {
     private GameObject pickup;
 
     //this contains nearby items
-    HashSet<Interactable_item> objectHoveringOver = new HashSet<Interactable_item>();
+    public HashSet<Interactable_item> objectHoveringOver = new HashSet<Interactable_item>();
 
     private Interactable_item closestItem;
     private Interactable_item interactingItem;
@@ -24,7 +24,12 @@ public class HTC_ViveGrab : MonoBehaviour {
     void Awake()
     {
         GMscript = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
-        device = SteamVR_Controller.Input((int)controller.index);
+        //device = SteamVR_Controller.Input((int)controller.index);
+    }
+
+    private void Start()
+    {
+        device = GetComponent<Teleporting>().GetDevice();
     }
 
     // Update is called once per frame
@@ -32,7 +37,7 @@ public class HTC_ViveGrab : MonoBehaviour {
     {
         if (XRDevice.model == "Vive MV")
         {
-            if (device.GetPressDown(Valve.VR.EVRButtonId.k_EButton_SteamVR_Trigger))
+            if (device.GetPressDown(Valve.VR.EVRButtonId.k_EButton_SteamVR_Trigger))//if trigger is pressed
             {
                 float minDistance = float.MaxValue;
                 float distance;
@@ -53,15 +58,21 @@ public class HTC_ViveGrab : MonoBehaviour {
                 {
                     if (interactingItem.isInteracting()) //check for if interaction is already going on
                     {
-                        interactingItem.endInteraction(this);
+                        interactingItem.endInteraction(GetComponent<HTC_ViveGrab>());//double check and end if already interacting
+                        Debug.Log("end crab");
                     }
                 }
 
-                interactingItem.beginInteraction(this);
+                if (objectHoveringOver.Count > 0)
+                {
+                    interactingItem.beginInteraction(GetComponent<HTC_ViveGrab>());//grabbing item
+                }
+                
             }
-            else if (device.GetPressUp(Valve.VR.EVRButtonId.k_EButton_SteamVR_Trigger) && !interactingItem)
+            else if (device.GetPressUp(Valve.VR.EVRButtonId.k_EButton_SteamVR_Trigger) && interactingItem)
             {
-                interactingItem.endInteraction(this);
+                interactingItem.endInteraction(GetComponent<HTC_ViveGrab>()); //end interaction
+                Debug.Log("second drop crab");
             }
         }
     }

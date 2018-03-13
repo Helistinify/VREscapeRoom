@@ -18,8 +18,10 @@ public class Interactable_item : MonoBehaviour {
     private Quaternion rotationDelta;
 
     private float angle;
+    [SerializeField]
     private float rotationFactor = 400f;
-    private float velocityFactor = 20000f;
+    [SerializeField]
+    private float velocityFactor = 200f;
 
 	// Use this for initialization
 	void Start () {
@@ -38,7 +40,7 @@ public class Interactable_item : MonoBehaviour {
             rotationDelta = grabCrab.transform.rotation * Quaternion.Inverse(interactionPoint.rotation);
             rotationDelta.ToAngleAxis(out angle, out axis);
 
-            if(angle > 180)
+            if (angle > 180)
             {
                 angle -= 360;
             }
@@ -50,6 +52,7 @@ public class Interactable_item : MonoBehaviour {
     public void beginInteraction(HTC_ViveGrab grab)
     {
         grabCrab = grab; //set grabCrab to grab
+
         interactionPoint.position = grab.transform.position; //position of grabbing
         interactionPoint.rotation = grab.transform.rotation; //rotation of grabbing
         interactionPoint.SetParent(transform, true); //at the positiion of grabbing sets an empty gameobject to child of hand and then makes the item a child of the empty gameobject
