@@ -1,9 +1,9 @@
 /************************************************************************************
 
-Copyright   :   Copyright 2014 Oculus VR, LLC. All Rights reserved.
+Copyright   :   Copyright 2014 Oculus XR, LLC. All Rights reserved.
 
-Licensed under the Oculus VR Rift SDK License Version 3.3 (the "License");
-you may not use the Oculus VR Rift SDK except in compliance with the License,
+Licensed under the Oculus XR Rift SDK License Version 3.3 (the "License");
+you may not use the Oculus XR Rift SDK except in compliance with the License,
 which is provided at the time of installation or download, or which
 otherwise accompanies this software in either electronic or hard copy form.
 
@@ -11,7 +11,7 @@ You may obtain a copy of the License at
 
 http://www.oculus.com/licenses/LICENSE-3.3
 
-Unless required by applicable law or agreed to in writing, the Oculus VR SDK
+Unless required by applicable law or agreed to in writing, the Oculus XR SDK
 distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
@@ -23,7 +23,7 @@ using System;
 using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
 using UnityEngine;
-using VR = UnityEngine.VR;
+using XR = UnityEngine.XR;
 
 /// <summary>
 /// Manages an Oculus Rift head-mounted display (HMD).
@@ -98,7 +98,7 @@ public class OVRDisplay
 	/// </summary>
 	public void RecenterPose()
 	{
-        VR.InputTracking.Recenter();
+        XR.InputTracking.Recenter();
 
 		if (RecenteredPose != null)
 		{
@@ -166,7 +166,7 @@ public class OVRDisplay
 	/// <summary>
 	/// Gets the resolution and field of view for the given eye.
 	/// </summary>
-    public EyeRenderDesc GetEyeRenderDesc(VR.VRNode eye)
+    public EyeRenderDesc GetEyeRenderDesc(XR.XRNode eye)
 	{
 		return eyeDescs[(int)eye];
 	}
@@ -230,11 +230,11 @@ public class OVRDisplay
 
 	private void UpdateTextures()
 	{
-		ConfigureEyeDesc(VR.VRNode.LeftEye);
-        ConfigureEyeDesc(VR.VRNode.RightEye);
+		ConfigureEyeDesc(XR.XRNode.LeftEye);
+        ConfigureEyeDesc(XR.XRNode.RightEye);
 	}
 
-    private void ConfigureEyeDesc(VR.VRNode eye)
+    private void ConfigureEyeDesc(XR.XRNode eye)
 	{
 		if (!OVRManager.isHmdPresent)
 			return;
