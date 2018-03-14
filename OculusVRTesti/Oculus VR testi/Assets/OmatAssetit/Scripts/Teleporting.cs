@@ -17,6 +17,8 @@ public class Teleporting : MonoBehaviour
     public SteamVR_TrackedObject controller;
     bool touchpadDown; //used to check if touchpad button is clicked
     Vector2 touchpadFingerPos;
+    [SerializeField]
+    float raycastHeight;
 
     void Start()
     {
@@ -40,6 +42,7 @@ public class Teleporting : MonoBehaviour
             controller = GetComponent<SteamVR_TrackedObject>();
             device = SteamVR_Controller.Input((int)controller.index);
         }
+        raycastHeight = 1.1f;
         touchpadDown = false;
         ShowIndicator = false;
         RHP_Render.enabled = false;
@@ -104,9 +107,21 @@ public class Teleporting : MonoBehaviour
                 // Move an object to the raycast hit point
                 if (hit.transform.tag == "Ground" && !transform.parent.parent.GetComponent<CheckBoolsCrouchTeleporting>().getIsCrouching())//if target is ground and is not crounching can teleport
                 {
-                    RHP_Object.transform.position = hit.point;
-                    TPosition = hit.point;
-                    transform.parent.parent.GetComponent<CheckBoolsCrouchTeleporting>().setCanTeleport(true);
+                    // Raycast from teleportindicator to up to check if there is an obstacle, the player shouldn't be able to teleport under narrow spaces
+                    RaycastHit fromTPositionUp;
+                    if (Physics.Raycast(hit.point, Vector3.up, out fromTPositionUp, raycastHeight))
+                    {
+                        if(hit.transform.tag == "Obstacle")
+                        {
+                            transform.parent.parent.GetComponent<CheckBoolsCrouchTeleporting>().setCanTeleport(false);
+                        }
+                    }
+                    else
+                    {
+                        RHP_Object.transform.position = hit.point;
+                        TPosition = hit.point;
+                        transform.parent.parent.GetComponent<CheckBoolsCrouchTeleporting>().setCanTeleport(true);
+                    }
                 }
                 else
                 {

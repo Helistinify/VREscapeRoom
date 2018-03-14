@@ -48,7 +48,15 @@ namespace VRGame
 
         void CreatePlayerObject()
         {
-            spawnPoint = new Vector3(3.5f, 3f, 0f);
+            if (XRDevice.model == "Oculus Rift CV1")
+            {
+                spawnPoint = new Vector3(0f, 3f, 0f);
+            }
+            else if (XRDevice.model == "Vive MV")
+            {
+                spawnPoint = new Vector3(0f, 1.8f, 0f);
+            }
+                
 
             GameObject newPlayerObject = PhotonNetwork.Instantiate(this.VRDToSpawn[PhotonNetwork.player.ID-1].name, spawnPoint, Quaternion.identity, 0); // this.VRDToSpawn.name old code. PhotonNetwork.player.ID-1 is the current player's ID
             GameObject teleportInd = PhotonNetwork.Instantiate("TeleporterIndicator", spawnPoint, Quaternion.identity, 0);

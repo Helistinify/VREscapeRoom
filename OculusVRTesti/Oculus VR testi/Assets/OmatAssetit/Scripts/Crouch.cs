@@ -14,7 +14,6 @@ public class Crouch : MonoBehaviour {
     // Use this for initialization
     void Start () {
         transform.parent.parent.GetComponent<CheckBoolsCrouchTeleporting>().setIsCrouching(false);
-        offset = new Vector3(0f, 1.2f, 0f);
         GMscript = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         if (XRDevice.model == "Vive MV")
         {
@@ -37,7 +36,7 @@ public class Crouch : MonoBehaviour {
         } 
         else if(XRDevice.model == "Vive MV")
         {
-            if(device.GetTouch(Valve.VR.EVRButtonId.k_EButton_SteamVR_Touchpad))
+            if (device.GetTouch(Valve.VR.EVRButtonId.k_EButton_SteamVR_Touchpad))
             {
                 touchpadFingerPos = device.GetAxis(Valve.VR.EVRButtonId.k_EButton_SteamVR_Touchpad);
             }
@@ -72,12 +71,20 @@ public class Crouch : MonoBehaviour {
         {
             if (b && !transform.parent.parent.GetComponent<CheckBoolsCrouchTeleporting>().getIsCrouching())
             {
-                Debug.Log("crouching");
+                // Raycast down to check how low the player will be set for crouching
+                RaycastHit hit;
+                if (Physics.Raycast(transform.parent.Find("Camera (eye)").transform.position, Vector3.down, out hit))
+                {
+                    if (hit.transform.tag == "Ground")
+                    {
+                        offset = transform.parent.Find("Camera (eye)").transform.position - hit.point;
+                        offset.y *= 0.45f;
+                    }
+                }
                 transform.parent.parent.position -= offset;
             }
             else if (!b && transform.parent.parent.GetComponent<CheckBoolsCrouchTeleporting>().getIsCrouching())
             {
-                Debug.Log("stop crouch");
                 transform.parent.parent.position += offset;
             }
         }
