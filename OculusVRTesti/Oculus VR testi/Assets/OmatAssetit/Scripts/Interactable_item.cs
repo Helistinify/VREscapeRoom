@@ -17,6 +17,8 @@ public class Interactable_item : MonoBehaviour {
 
     private Quaternion rotationDelta;
 
+    //public float minSpeed;
+
     private float angle;
     [SerializeField]
     private float rotationFactor = 400f;
@@ -37,6 +39,16 @@ public class Interactable_item : MonoBehaviour {
         {
             posDelta = grabCrab.transform.position - interactionPoint.position;
             this.rb.velocity = posDelta * velocityFactor * Time.fixedDeltaTime;
+
+            //stop wiggle
+            /*
+            if ((posDelta * velocityFactor * Time.fixedDeltaTime).magnitude > minSpeed)
+            {
+                this.rb.velocity = posDelta * velocityFactor * Time.fixedDeltaTime;
+
+            }
+            else this.rb.velocity = new Vector3(0.0f,0.0f,0.0f);*/
+
             rotationDelta = grabCrab.transform.rotation * Quaternion.Inverse(interactionPoint.rotation);
             rotationDelta.ToAngleAxis(out angle, out axis);
 
@@ -51,6 +63,7 @@ public class Interactable_item : MonoBehaviour {
 
     public void beginInteraction(HTC_ViveGrab grab)
     {
+        rb.useGravity = false;
         grabCrab = grab; //set grabCrab to grab
 
         interactionPoint.position = grab.transform.position; //position of grabbing
@@ -62,7 +75,9 @@ public class Interactable_item : MonoBehaviour {
 
     public void endInteraction(HTC_ViveGrab grab)
     {
-        if(grabCrab == grab)
+        rb.useGravity = true;
+
+        if (grabCrab == grab)
         {
             grabCrab = null;
             currentlyInteracting = false;
