@@ -10,6 +10,7 @@ public class Crouch : MonoBehaviour {
     private SteamVR_Controller.Device device;
     public SteamVR_TrackedObject controller;
     Vector2 touchpadFingerPos;
+    public bool tagGround=false;
 
     // Use this for initialization
     void Start () {
@@ -56,6 +57,7 @@ public class Crouch : MonoBehaviour {
                 }
             }
         }
+
     }
 
     void SetCrouch(bool b)
@@ -75,17 +77,24 @@ public class Crouch : MonoBehaviour {
                 RaycastHit hit;
                 if (Physics.Raycast(transform.parent.Find("Camera (eye)").transform.position, Vector3.down, out hit))
                 {
-                    if (hit.transform.tag == "Ground")
+                    Debug.Log("in physics.raycast hit" + hit.transform.tag);
+                    if (hit.transform.tag == "Ground")  // MIKSI EI MENE TÄNNE JOS PÄÄTÄ EI OLE KÄÄNNETTY
                     {
                         offset = transform.parent.Find("Camera (eye)").transform.position - hit.point;
                         offset.y *= 0.45f;
+                        Debug.Log("change offset, new offset is" + offset);
+
                     }
                 }
                 transform.parent.parent.position -= offset;
+                //Debug.Log("alas"+offset+ hit.transform.tag);
+                
+
             }
             else if (!b && transform.parent.parent.GetComponent<CheckBoolsCrouchTeleporting>().getIsCrouching())
             {
                 transform.parent.parent.position += offset;
+
             }
         }
     }

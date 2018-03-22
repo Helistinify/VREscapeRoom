@@ -27,7 +27,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1152217522973618
 GameObject:
   m_ObjectHideFlags: 1
@@ -648,6 +648,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 0}
+  tagGround: 0
 --- !u!114 &114051051734072244
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -967,6 +968,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad8eba968749e3e4f9cf03a6ebd07526, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isCrouching: 0
+  isTeleporting: 0
   whichController: {fileID: 0}
 --- !u!114 &114804552826088584
 MonoBehaviour:
@@ -980,6 +983,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 0}
+  tagGround: 0
 --- !u!114 &114874133121823134
 MonoBehaviour:
   m_ObjectHideFlags: 1

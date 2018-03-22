@@ -4,10 +4,15 @@ using UnityEngine;
 
 public class CheckBoolsCrouchTeleporting : MonoBehaviour {
 
-    bool isCrouching;
-    bool isTeleporting;
+    public bool isCrouching;
+    public bool isTeleporting;
     [SerializeField]
     GameObject whichController; // used to check if controller is trying to teleport or crouch
+    private void Awake()
+    {
+        isCrouching = false;
+        isTeleporting = false;
+    }
 
     //setters
     public void setIsCrouching(bool crouching)
