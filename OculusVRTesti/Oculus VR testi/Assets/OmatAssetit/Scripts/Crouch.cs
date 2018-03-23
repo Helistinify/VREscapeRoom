@@ -62,6 +62,7 @@ public class Crouch : MonoBehaviour {
 
     void SetCrouch(bool b)
     {
+        int LayerMask = ~(1 << 8);  //Set layer to ignore 8=player layer
         if (XRDevice.model == "Oculus Rift CV1")
         {
             if (b)
@@ -75,9 +76,13 @@ public class Crouch : MonoBehaviour {
             {
                 // Raycast down to check how low the player will be set for crouching
                 RaycastHit hit;
-                if (Physics.Raycast(transform.parent.Find("Camera (eye)").transform.position, Vector3.down, out hit))
-                {
-                    Debug.Log("in physics.raycast hit" + hit.transform.tag);
+                
+
+                //if (Physics.Raycast(transform.parent.Find("Camera (eye)").transform.position, Vector3.down,out hit)) // old if sentence
+                if (Physics.Raycast(transform.parent.Find("Camera (eye)").transform.position, Vector3.down, out hit, Mathf.Infinity, LayerMask))
+
+                    {
+                        Debug.Log("in physics.raycast hit" + hit.transform.name);
                     if (hit.transform.tag == "Ground")  // MIKSI EI MENE TÄNNE JOS PÄÄTÄ EI OLE KÄÄNNETTY
                     {
                         offset = transform.parent.Find("Camera (eye)").transform.position - hit.point;
