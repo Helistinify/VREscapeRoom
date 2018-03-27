@@ -58,6 +58,7 @@ GameObject:
   - component: {fileID: 114384269731735372}
   - component: {fileID: 114859521703452618}
   - component: {fileID: 114583220388779216}
+  - component: {fileID: 114480967577316786}
   m_Layer: 2
   m_Name: OculusPlayer
   m_TagString: Untagged
@@ -91,6 +92,7 @@ GameObject:
   - component: {fileID: 54321106869057640}
   - component: {fileID: 114758783989952684}
   - component: {fileID: 114014122480374770}
+  - component: {fileID: 114470549225340060}
   m_Layer: 2
   m_Name: LeftHandAnchor
   m_TagString: Untagged
@@ -142,6 +144,7 @@ GameObject:
   - component: {fileID: 54306571438470802}
   - component: {fileID: 114014956234444120}
   - component: {fileID: 114814881326504040}
+  - component: {fileID: 114344463150865542}
   m_Layer: 2
   m_Name: RightHandAnchor
   m_TagString: Untagged
@@ -209,7 +212,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4126814267084522}
-  - component: {fileID: 114520722919933262}
   m_Layer: 2
   m_Name: TrackingSpace
   m_TagString: Untagged
@@ -335,7 +337,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1333366472102300}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2, z: 0}
+  m_LocalPosition: {x: 6.4972324, y: 3, z: -6.577153}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4044051696823700}
@@ -624,6 +626,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Controller: {fileID: 0}
   controller: {fileID: 0}
+  raycastHeight: 0
 --- !u!114 &114014956234444120
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -677,6 +680,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   usePerEyeCameras: 0
   useFixedUpdateForTracking: 0
+--- !u!114 &114344463150865542
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1536711970596872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d2635f300a5302478a29b551d16f739, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controller: {fileID: 0}
+  tagGround: 0
 --- !u!114 &114375150730313810
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -734,18 +750,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b71d1996d67004241a3b69960856ffcb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114520722919933262
+--- !u!114 &114470549225340060
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1869127919169028}
+  m_GameObject: {fileID: 1424779578619004}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9d2635f300a5302478a29b551d16f739, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 0}
+  tagGround: 0
+--- !u!114 &114480967577316786
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1333366472102300}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad8eba968749e3e4f9cf03a6ebd07526, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isCrouching: 0
+  isTeleporting: 0
+  whichController: {fileID: 0}
 --- !u!114 &114583220388779216
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -871,6 +902,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Controller: {fileID: 0}
   controller: {fileID: 0}
+  raycastHeight: 0
 --- !u!114 &114859521703452618
 MonoBehaviour:
   m_ObjectHideFlags: 1

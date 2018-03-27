@@ -11,31 +11,43 @@ public class Crouch : MonoBehaviour {
     public SteamVR_TrackedObject controller;
     Vector2 touchpadFingerPos;
     public bool tagGround=false;
+    GameObject Grandparent; // Parentti
 
     // Use this for initialization
     void Start () {
-        transform.parent.parent.GetComponent<CheckBoolsCrouchTeleporting>().setIsCrouching(false);
         GMscript = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
-        if (XRDevice.model == "Vive MV")
+        if (XRDevice.model == "Vive MV")//------------------------------------Vive-----------------------------------------------------------
         {
+            Grandparent = gameObject.transform.parent.parent.gameObject;
             device = GetComponent<Teleporting>().GetDevice();
         }
-    }
-	
-	// Update is called once per frame
-	void Update () {
-        if (XRDevice.model == "Oculus Rift CV1")
+        else if (XRDevice.model == "Oculus Rift CV1")//------------------------------Oculus--------------------------------------------------------------------------------------
         {
-            if (Input.GetButtonDown("Cancel")) // When the button is pressed down
+            Grandparent=gameObject.transform.parent.parent.parent.gameObject;
+        }
+       Grandparent.GetComponent<CheckBoolsCrouchTeleporting>().setIsCrouching(false);
+
+    }
+
+    // Update is called once per frame
+    void Update () {
+        if (XRDevice.model == "Oculus Rift CV1")//------------------------Oculus------------------------------------------------------------
+        {
+            if ((OVRInput.GetDown(OVRInput.RawButton.B) || OVRInput.GetDown(OVRInput.RawButton.Y)) && !Grandparent.GetComponent<CheckBoolsCrouchTeleporting>().getIsCrouching()) // When the button is pressed down
             {
-                SetCrouch(true);
+                Grandparent.GetComponent<CheckBoolsCrouchTeleporting>().setIsCrouching(true);
+                //   SetCrouch(true);
+                Debug.Log("Crouch");
             }
-            if (Input.GetButtonUp("Cancel"))// When the button is released
+            if ((OVRInput.GetUp(OVRInput.RawButton.B) || OVRInput.GetUp(OVRInput.RawButton.Y)) && Grandparent.GetComponent<CheckBoolsCrouchTeleporting>().getIsCrouching())// When the button is released
             {
-                SetCrouch(false);
+                Grandparent.GetComponent<CheckBoolsCrouchTeleporting>().setIsCrouching(false);
+                // SetCrouch(false);
+                Debug.Log("StopCrouch");
+
             }
         } 
-        else if(XRDevice.model == "Vive MV")
+        else if(XRDevice.model == "Vive MV")//----------------------------------Vive------------------------------------------------------------
         {
             if (device.GetTouch(Valve.VR.EVRButtonId.k_EButton_SteamVR_Touchpad))
             {
@@ -56,21 +68,21 @@ public class Crouch : MonoBehaviour {
                     transform.parent.parent.GetComponent<CheckBoolsCrouchTeleporting>().setIsCrouching(false);
                 }
             }
-        }
+        }//-------------------------------------------------------------------------------------------------------------------------------------
 
     }
 
     void SetCrouch(bool b)
     {
-        int LayerMask = ~(1 << 8);  //Set layer to ignore 8=player layer
-        if (XRDevice.model == "Oculus Rift CV1")
+        int LayerMask = ~(1 << 8);  //Set layer to ignore layer 8 (=player layer)
+        if (XRDevice.model == "Oculus Rift CV1")//-------------------------------------oculus------------------------------------------------------
         {
             if (b)
                 transform.position -= offset;
             else
                 transform.position += offset;
         }
-        if (XRDevice.model == "Vive MV")
+        if (XRDevice.model == "Vive MV")//--------------------------------------------------Vive----------------------------------------------------------
         {
             if (b && !transform.parent.parent.GetComponent<CheckBoolsCrouchTeleporting>().getIsCrouching())
             {
@@ -83,7 +95,7 @@ public class Crouch : MonoBehaviour {
 
                     {
                         Debug.Log("in physics.raycast hit" + hit.transform.name);
-                    if (hit.transform.tag == "Ground")  // MIKSI EI MENE TÄNNE JOS PÄÄTÄ EI OLE KÄÄNNETTY
+                    if (hit.transform.tag == "Ground")
                     {
                         offset = transform.parent.Find("Camera (eye)").transform.position - hit.point;
                         offset.y *= 0.45f;
@@ -101,6 +113,6 @@ public class Crouch : MonoBehaviour {
                 transform.parent.parent.position += offset;
 
             }
-        }
+        }//----------------------------------------------------------------------------------------------------------------------------------------------------
     }
 }
