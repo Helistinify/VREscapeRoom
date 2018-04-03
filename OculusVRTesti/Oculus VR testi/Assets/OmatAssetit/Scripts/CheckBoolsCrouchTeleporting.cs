@@ -37,7 +37,7 @@ public class CheckBoolsCrouchTeleporting : MonoBehaviour {
         return isCrouching;
     }
 
-    public bool getCanTeleport()
+    public bool getCanTeleport() //get isTeleporting?
     {
         return isTeleporting;
     }
