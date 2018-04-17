@@ -13,11 +13,11 @@ public class OcculusTeleGrab : MonoBehaviour {
     //teleport
     public GameObject LeftController;   // Use X button
     public GameObject RightController; //Use A button
+    private GameObject ControllerInUse =null;
 
     GameObject RHP_Object; //Raycast Hit Point Object
     Renderer RHP_Render; //Raycast Hit Point Renderer
     GameManager GMscript; // ?
-    bool touchpadDown; //used to check if touchpad button is clicked
     bool ShowIndicator;
     Vector3 TPosition;
     [SerializeField]
@@ -38,7 +38,6 @@ public class OcculusTeleGrab : MonoBehaviour {
 
         GMscript = GameObject.Find("GameManager").GetComponent<GameManager>();
         raycastHeight = 1.1f;
-        touchpadDown = false;
         ShowIndicator = false;
         RHP_Render.enabled = false;
     }
@@ -61,32 +60,56 @@ public class OcculusTeleGrab : MonoBehaviour {
             checkScript.setIsCrouching(false);
 
             }
-        if (OVRInput.GetDown(OVRInput.RawButton.A)) // When the button is pressed down // (Input.GetButtonDown("Submit"))
+        if ((OVRInput.Get(OVRInput.RawButton.A)|| OVRInput.Get(OVRInput.RawButton.X))) // While the button is kept down // (Input.GetButtonDown("Submit"))
             {
+            if(ControllerInUse==null && OVRInput.Get(OVRInput.RawButton.A))
+            {
+                ControllerInUse = RightController;
+            } else if (ControllerInUse == null)
+            {
+                ControllerInUse = LeftController;
+            }
                 ShowIndicator = true;
             }
-        if (OVRInput.GetUp(OVRInput.RawButton.A)) // When the button is released
+        if (OVRInput.GetUp(OVRInput.RawButton.A) && ControllerInUse == RightController) // When the button is released
             {
              ShowIndicator = false;
-             // Move player object to wherever the raycast hit point is at
-             if (checkScript.getCanTeleport())
+            ControllerInUse = null;
+            // Move player object to wherever the raycast hit point is at
+            if (checkScript.getCanTeleport())
               {
-                 Debug.Log(TPosition);
-                 transform.position = TPosition+ new Vector3(0.0f, 10.0f, 0.0f);
-                 checkScript.setCanTeleport(false);
-                 RendererEnabled(checkScript.getCanTeleport());
+                transform.position = TPosition; //+ new Vector3(0.0f, 10.0f, 0.0f);
+                Debug.Log("teleport to " + TPosition);
+                checkScript.setCanTeleport(false);
+                RendererEnabled(checkScript.getCanTeleport());
               }
             }
+        if (OVRInput.GetUp(OVRInput.RawButton.X) && ControllerInUse == LeftController) // When the button is released
+        {
+            ShowIndicator = false;
+            ControllerInUse = null;
+            // Move player object to wherever the raycast hit point is at
+            if (checkScript.getCanTeleport())
+            {
+                transform.position = TPosition; //+ new Vector3(0.0f, 10.0f, 0.0f);
+                Debug.Log("teleport to " + TPosition);
+                checkScript.setCanTeleport(false);
+                RendererEnabled(checkScript.getCanTeleport());
+            }
+        }
 
     }
     void FixedUpdate()
     {
         if (ShowIndicator)
         {
+
             // Raycast forward from Controller
             RaycastHit hit;
-            if (Physics.Raycast(RightController.transform.position, transform.forward, out hit)) // Also check if raycast hit not touching an object with tag "Wall"
+            if (Physics.Raycast(ControllerInUse.transform.position, ControllerInUse.transform.forward, out hit)) // Also check if raycast hit not touching an object with tag "Wall"
             {
+                Debug.Log("Raycast Hit "+hit.transform);
+
                 // Move an object to the raycast hit point
                 if (hit.transform.tag == "Ground" && !checkScript.getIsCrouching())//if target is ground and is not crounching can teleport
                 {
